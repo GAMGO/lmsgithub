@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>사용자 입력 폼</title>
+    <link rel="stylesheet" href="assets/10btn.css" />
 </head>
 <header>
     <hr />
@@ -15,24 +16,80 @@
 <body>
     <h3>사용자 입력 폼</h3>
     <!-- 
-        *기본형식 form태그 안에 input을 배치 
-        |입력값을 서버로 제출(submit)하는 버튼이 필요
+        *form은 서버에 전송할 데이터를 입력하는 목적. 
+        기본형식 form태그 안에 input을 배치 
+        |입력값을 서버로 제출(submit)하는 버튼이 반드시 필요.
         데이터를 전달받는 서버의 주소는 action속성에 필요.
         서버 주소가 내부일 때는 파일명만 작성.
-        
+        엔터키가 먹는건 submit만 가능한데.. 웬만하면 Java로 구현하는 것이 좋다고 한다.
 -->
-        <!-- 실제 데이터를 받는 것은 html에서 못함. -->
+    <!-- 실제 데이터를 받는 것은 html에서 못함. -->
     <form action="10-1success.html">
         <input type="text" name="userid">
-        <input type="password" pw="">
+        <input type="password" pw="keys">
         <Button type="submit">confirm</Button>
     </form>
+    <hr>
     <p>
         데이터를 입력 후 confirm버튼을 클릭하면 주소창이 아래와 같이 바뀐다.<br>
         <b>http://127.0.0.1:5500/day03/10-1success.html?userid=mr.honga</b><br>
         HTML은 웹사이트의 화면만 띄워주는 마크업 언어라 이러한 데이터를 처리하기위해<br>
         Java가 필요하다.<br>
     </p>
+    <hr>
+    <form action="10-1success.html">
+        <h3>2개 이상 입력</h3>
+        <div>
+            <div>
+                <input type="text" name="userid" placeholder="ID를 입력하십시오.">
+            </div>
+            <!-- 전달하는 데이터를 구분하기 위해 '이름'을 개발자가 직접 지어줘야한다.
+             (input요소의 name속성에 설정. ) -->
+            <div>
+                <input type="text" name="location" placeholder="거주중인 지역을 입력하십시오.">
+            </div>
+            <div>
+                <Button type="submit">confirm</Button>
+            </div>
+        </div>
+    </form>
+    <p>
+        데이터를 입력 후 confirm버튼을 클릭하면 주소창이 아래와 같이 바뀐다.<br>
+        <b>http://127.0.0.1:5500/day03/10-1success.html?userid=mr.honga</b><br>
+    </p>
+    <!-- http://127.0.0.1:5500/day03/10-1success.html?userid=kasdlkjasd&location=%EC%84%9C%EC%9A%B8 중에
+     userid=kasdlkjasd&location=%EC%84%9C%EC%9A%B8 이렇게 각정도를 &로 묶어 표기하는 데 이것은 쿼리(Query)라고 한다.
+     ?기호로 시작해서 서버의 주소를 구별함.-->
+    <hr>
+    <form action="10-1success.html">
+        <h3>다양한 input속성 테스트</h3>
+        <div>
+            <input type="hidden" name="code" value="XA00123">
+            <div>
+                <!-- 타입이 hidden인 경우 화면에는 보이지 않지만 서버로는 전송이 되는 데이터이다. -->
+                <input type="number" name="age" placeholder="나이를 입력해주세요.">
+            </div>
+            <!-- 전달하는 데이터를 구분하기 위해 '이름'을 개발자가 직접 지어줘야한다.
+             (input요소의 name속성에 설정. ) -->
+            <div>
+                <input type="date" name="booking" placeholder="예약날짜 입력">
+            </div>
+            <div>
+                <Button type="submit">confirm</Button>
+            </div>
+            <div>
+                <Button type="reset">Erase all</Button>
+            </div>
+        </div>
+    </form>
+    <div class="in">
+        <a href="..\day02\03Hyperlink.html">
+            <div>
+                <img width="125px" src="assets/imgs/button.webp" />
+            </div>
+        </a>
+    </div>
+
 </body>
 
 </html>
