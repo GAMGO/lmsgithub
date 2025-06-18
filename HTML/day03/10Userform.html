@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사용자 입력 폼</title>
+</head>
+<header>
+    <hr />
+    <a href="..\day02\03Hyperlink.html">메인페이지</a>
+    <hr />
+</header>
+
+<body>
+    <h3>사용자 입력 폼</h3>
+    <!-- 
+        *기본형식 form태그 안에 input을 배치 
+        |입력값을 서버로 제출(submit)하는 버튼이 필요
+        데이터를 전달받는 서버의 주소는 action속성에 필요.
+        서버 주소가 내부일 때는 파일명만 작성.
+        
+-->
+        <!-- 실제 데이터를 받는 것은 html에서 못함. -->
+    <form action="10-1success.html">
+        <input type="text" name="userid">
+        <input type="password" pw="">
+        <Button type="submit">confirm</Button>
+    </form>
+    <p>
+        데이터를 입력 후 confirm버튼을 클릭하면 주소창이 아래와 같이 바뀐다.<br>
+        <b>http://127.0.0.1:5500/day03/10-1success.html?userid=mr.honga</b><br>
+        HTML은 웹사이트의 화면만 띄워주는 마크업 언어라 이러한 데이터를 처리하기위해<br>
+        Java가 필요하다.<br>
+    </p>
+</body>
+
+</html>
