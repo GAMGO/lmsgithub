@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="..\day02\namuicon.png" />
+    <!-- <link rel="Script" href="" /> -->
+    <style>
+        /*CSS주석..*/
+        /*h2 태그에 적용할 스타일 설정*/
+        h2 {
+            color: darkgray;
+            background-color: darkblue;
+            padding: 10px;
+            border: 15px;
+            text-align: center;
+            background-image: none;
+        }
+        ol>li {
+            color: brown;
+            font-weight: 800;
+            /*자식은 바로 근접한 하위 요소만, - 기호 '>'(왼쪽부등호Gt)를 사용.
+            자손은 모든 하위요소를 말한다. - 기호 ' '(공백space)을 사용.
+            */
+        }
+
+        /*nth-child & nth-of-type*/
+        div:nth-child(2) {
+            background-color: brown;
+
+        }
+
+        /*nth-child는 Article 부모 태그의 두번째 요소가 p이면 적용하기에 표시가 안되었고
+            div로 수정하게되면 2번째 요소가 div"첫번째 div"이므로 첫번째 div에 색상이 적용됨.
+            자식요소들이 모두 '같은 이름 태그'라면 nth-child 와 nth-of-type 결과가 같다.*/
+        p:nth-of-type(2) {
+            background-color: pink;
+        }
+        /*nth-of-type은 Article 부모 태그의 p요소중에 두번째에 색상 설정.
+        자식요소들의 태그이름을 구별해서 순서를 지정하고 싶을 때 사용.*/
+        /*중복된 스타일의 적용순서는 마지막에 설정된 컬러가 적용된다. 추가로, 구체적인 설정값의 스타일이 맨 위로 올라오게 된다고 한다.*/
+        p{
+            color: brown;
+        }
+        p{
+            color: mediumaquamarine;
+        }
+    </style>
+    <title>CSS</title>
+</head>
+
+<header>
+    <hr />
+    <a href="..\day02\03Hyperlink.html">메인페이지</a>
+    <hr />
+</header>
+
+<body>
+    <h2>CSS</h2>
+    <ul>
+        <li>기본적으로 태그마다 h1--h6,p,hr 등의 태그들이 갖는 스타일이 있다.
+        <li>기본적인 스타일을 사용하고 추가로 스타일 속성을 정하거나 설정된 값을 변경할 수 있다.
+            <br>태그의 Style 속성값으로 설정 - 내용이 많아지면 관리와 가독성이 많이 떨어진다.
+            <br> 따라서 다음과 같은 방법으로 설정하면 조금 더 관리하기 편리하게 세팅할 수 있다.
+        </li>
+        <ol>
+            <li>Head안에 Style 태그로 설정</li>
+            <li>별도의 CSS파일을 만들어 활용 - head안에 link라는 태그로 연결.</li>
+        </ol>
+        </li>
+    </ul>
+    <hr>
+    <h2>자식요소 선택 예시</h2>
+    <article>
+        <p style="color: red;">첫번째 문단</p>
+        <div>첫번째 div
+            <p>1</p>
+            <p>2</p>
+        </div>
+        <p>두번째 문단</p>
+        <div>두번째 div</div>
+        <p>세번째 문단</p>
+        <div>세번째 div</div>
+    </article>
+</body>
+
+</html>
