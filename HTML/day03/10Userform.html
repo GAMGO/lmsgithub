@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>사용자 입력 폼</title>
+    <link rel="icon" href="..\day02\datas\list.png" />
     <link rel="stylesheet" href="assets/10btn.css" />
 </head>
 <header>
@@ -64,10 +65,11 @@
     <form action="10-1success.html">
         <h3>다양한 input속성 테스트</h3>
         <div>
-            <input type="hidden" name="code" value="XA00123">
+            <input type="hidden" name="code" value="XA000123">
             <div>
                 <!-- 타입이 hidden인 경우 화면에는 보이지 않지만 서버로는 전송이 되는 데이터이다. -->
-                <input type="number" name="age" placeholder="나이를 입력해주세요.">
+                <input type="number" name="age" placeholder="나이를 입력해주세요." value="25">
+                <!-- age 데이터의 기본값 25라는 뜻 value로 기본값을 설정한다. -->
             </div>
             <!-- 전달하는 데이터를 구분하기 위해 '이름'을 개발자가 직접 지어줘야한다.
              (input요소의 name속성에 설정. ) -->

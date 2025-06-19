@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex box Document</title>
+    <link rel="stylesheet" href="assets/12Felxbox.css">
+    <link rel="icon" href="assets/icon/flexicon.svg">
+</head>
+<header>
+    <hr />
+    <a href="..\day02\03Hyperlink.html">메인페이지</a>
+    <hr />
+</header>
+
+<body>
+    <h3>row nowrap에 대해</h3>
+    <details>
+        <summary>펼쳐보기</summary>
+        <div class="container flex-row">
+            <div>H</div>
+            <div>T</div>
+            <div>M</div>
+            <div>L</div>
+        </div>
+    </details>
+    <h3>row nowrap+align-items</h3>
+    <details>
+        <summary>펼쳐보기</summary>
+        <p>no wrap 단일행인 경우, 반대축 정렬하는 방법은 align-items를 사용.</p>
+        <div class="container flex-row" style="align-items: center">
+            <div>H</div>
+            <div>T</div>
+            <div>M</div>
+            <div>L</div>
+        </div>
+    </details>
+    <h3>row nowrap <a style="color: blue;">'flex-grow: 1;'</a>적용</h3>
+    <details>
+        <summary>펼쳐보기</summary>
+        <div class="container flex-row">
+            <div>H</div>
+            <div style="flex-grow: 1;">T</div>
+            <div style="flex-grow: 2;">M</div>
+            <div>L</div>
+        </div>
+    </details>
+    <h3>row warp에 대해</h3>
+    <details>
+        <summary>펼쳐보기</summary>
+        <p>
+            래핑 효과를 확인해보려면 부모 요소가 작아지도록
+            브라우저의 크기를 줄여서 확인해야함.
+        </p>
+        <div class="container flex-row wrap">
+            <div>H</div>
+            <div>T</div>
+            <div>M</div>
+            <div>L</div>
+        </div>
+    </details>
+    <h3>row warp+align-content!</h3>
+    <details>
+        <summary>펼쳐보기</summary>
+        <p>반대축 방향으로 정렬시 align-content 속성을 사용.
+        </p>
+        <div class="container flex-row wrap" style="align-content: center;">
+            <div>H</div>
+            <div>T</div>
+            <div>M</div>
+            <div>L</div>
+        </div>
+    </details>
+    <h3>space-evenly</h3>
+    <details>
+        <summary>펼쳐보기</summary>
+        <p> justify-content는 부모요소의 공간이 많을 때 정렬(flex-direction 방향)할 때 사용</p>
+        <div class="container flex-row wrap" style="justify-content: space-evenly;">
+            <div>H</div>
+            <div>T</div>
+            <div>M</div>
+            <div>L</div>
+        </div>
+    </details>
+    <h3>space-around</h3>
+    <details>
+        <summary>펼쳐보기</summary>
+        <div class="container flex-row wrap" style="justify-content: space-around;">
+            <div>H</div>
+            <div>T</div>
+            <div>M</div>
+            <div>L</div>
+        </div>
+    </details>
+    <h3>space-between</h3>
+    <details>
+        <summary>펼쳐보기</summary>
+        <div class="container flex-row" style="justify-content: space-between;">
+            <div>H</div>
+            <div>T</div>
+        </div>
+    </details>
+</body>
+
+</html>

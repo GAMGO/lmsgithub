@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="\day02\datas\list.png" />
     <link rel="stylesheet" href="assets/bugpagestyle.css" />
+    <link rel="stylesheet" href="..\day02\datas\forhr.css" />
     <title>Bug List</title>
 </head>
 <header>
@@ -13,14 +14,20 @@
     <a href="..\day02\03Hyperlink.html">메인페이지</a>
     <hr />
 </header>
-
 <body>
-    <table>
-        <th class="title">버그 리스트
+    <table class="title">
+        <th>버그 리스트
             <ol>
                 <li>
-                    <p>250617 - live server로 접속이 안되는 문제가 있었음. "192.168.0.160:5500/day02/day2words.html"접속 안됨.</p>
+                    <div class="hr-sect">2025.06.17 : live server 접속 문제</div>
+                    <p>live server로 접속이 안되는 문제가 있었음."192.168.0.160:5500/day02/day2words.html"접속 안됨.</p>
                     <p><b>*해결 Live server 재설치</b></p>
+                </li>
+                <li>
+                    <div class="hr-sect">2025.06.19 : 03Hyperlink 날짜별 줄 bold 버그</div>
+                    <p>웹사이트 크기 110%로 볼 경우 6월19일 이후 구분줄이 두꺼워보이는 버그가 있음.</p>
+                    <p>110%아닌 그 이하,이상 조정시 없어지는 것으로 미루어보아 디스플레이 성능 또는 렌더링 문제로 보고있음.</p>
+                    <p><b>*110%로 설정됐는지 살펴보고 100%으로 볼 것.</b></a></p>
                 </li>
             </ol>
         </th>

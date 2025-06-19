@@ -1,0 +1,27 @@
+        .hr-sect {
+            width: 100%;
+            color: #0000005b;
+            font-weight: 800;
+            display: flex;
+            flex-basis: 20%;
+            align-items: center;
+        }
+
+        .hr-sect::before,
+        .hr-sect::after {
+            flex-grow: 2;
+            background: #0000005b;
+            height: 1px;
+            font-size: 1px;
+            line-height: 0px;
+            margin: 0px 0px;
+            content: "";
+
+        }
+
+        li {
+            padding: 0.5em;
+            margin: 2px;
+            text-align: center;
+            border: 2px solid #0000005b;
+        }

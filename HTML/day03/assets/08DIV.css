@@ -9,7 +9,7 @@ div.container {
 div.htmlcontainer {
     width: 400px;
     margin: 5%;
-    border: 2px solid rgb(228, 77, 38);
+    border: 2px solid #e54c21;
     /* float: left; */
        font-weight: 500;
 }
@@ -28,7 +28,7 @@ div.htmllogo {
 
 
 div.tables>div {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2)
+    border-bottom: 1px solid #00000027
 }
 
 div.homepage {
@@ -37,7 +37,7 @@ div.homepage {
 
 /* 중복되는 속성은 따로 정의. */
 div.bottom {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2)
+    border-bottom: 1px solid #00000027;
 }
 
 div.textaligns {
@@ -60,7 +60,7 @@ span {
 
 span.title {
     width: 25%;
-    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    border-right: 1px solid #00000027;
     text-align: center;
     font-weight: 600;
     font-family: "Malgun Gothic";
