@@ -36,18 +36,25 @@
             font-weight: 800;
         }
 
-        ul{
+        footer ul {
+            justify-content: space-evenly;
+            margin: auto;
             display: flex;
-            align-items: center;
+
+        }
+
+        footer li {
+            flex-wrap: wrap;
             flex-direction: column;
             align-items: center;
             list-style: none;
             cursor: pointer;
-            margin: auto;
+            padding: 20px;
         }
+
         .fontstp a {
             text-decoration-line: none;
-            flex-wrap: wrap;
+            padding: 5px;
             border: 2px solid #0000FF;
             color: black;
             transition: transform .2s ease, border-color 0.5s ease, border-radius 0.4s ease;
