@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" sizes="16x16" href="..\day05\assets\icons\js.svg">
+    <title>IF Probelm Document</title>
+</head>
+
+<body style="background: linear-gradient(#000,#15165a);">
+        <header>
+        <hr />
+        <a href="..\..\html\day02\03Hyperlink.html">메인페이지</a>
+        <hr />
+    </header>
+    <div>
+    <button id="btn1" @click()>ON</button>
+    <button id="btn2" @click()>OFF</button>
+    <img src="..\day05\assets\imgs\pic_bulboff.gif" alt="전등 꺼짐" style="cursor: pointer;" width="256px">
+    <hr>
+    </div>
+</body>
+<script>
+    "use strict"
+    const turnonvar = document.getElementById('btn2');
+    const img = document.querySelector('img');
+    const bulboff = "../day05/assets/imgs/pic_bulboff.gif";
+    const bulbon = "../day05/assets/imgs/pic_bulbon.gif";
+    let isOn = false; //true(ON), false(OFF)
+    let bulbImg;
+    let isOnString;
+    img.addEventListener('click',()=>{
+         if (isOn) {
+            isOnString = 'OFF'
+            bulbImg = bulboff
+            img.alt = "전등 꺼짐"
+            // img.querySelector("alt") = "전등 꺼짐"
+        } else {
+            isOnString = 'ON'
+            bulbImg = bulbon
+            img.alt = "전등 켜짐"
+
+            //  img.querySelector("alt")  = "전등 켜짐"
+        }
+        turnonvar.textContent = isOnString
+        img.src = bulbImg
+        isOn = !isOn
+    })
+    turnonvar.addEventListener('click', () => {
+        if (isOn) {
+            isOnString = 'OFF'
+            bulbImg = bulboff
+            img.alt = "전등 꺼짐"
+            // img.querySelector("alt") = "전등 꺼짐"
+        } else {
+            isOnString = 'ON'
+            bulbImg = bulbon
+            img.alt = "전등 켜짐"
+
+            //  img.querySelector("alt")  = "전등 켜짐"
+        }
+        // 버튼과 이미지에 변수 값 적용
+        turnonvar.textContent = isOnString
+        img.src = bulbImg
+        isOn = !isOn
+        // isOn상태를 현재 상태와 반개로 변경하기 위하여 값 앞에 (!)를 추가하면 된다.
+    })
+    const turnon = document.getElementById('btn1');
+    btn1.addEventListener('click', (e) => {
+        if (btn1.textContent === "ON") {
+            btn1.textContent = 'OFF'
+        } else {
+            btn1.textContent = 'ON'
+        }
+    })
+
+</script>
+
+</html>

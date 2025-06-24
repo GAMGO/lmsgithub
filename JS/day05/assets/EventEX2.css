@@ -1,0 +1,45 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+}
+
+div.nav>button {
+    width: 60px;
+    height: 60px;
+
+}
+
+div.nav {
+    /* background-color: #244436; */
+    display: flex;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(#244436, #3da073);
+}
+
+div#box {
+    width: 150px;
+    height: 150px;
+    background-color: aqua;
+    /* BOX의 위치 변경을 위한 설정 */
+    position: absolute;
+    border-right: 2px solid blue;
+    border-bottom: 2px solid blue;
+}
+div#box:active{
+    border-right: 2px solid red;
+    border-bottom: 2px solid red;
+}
+div.main {
+    background-color: antiquewhite;
+    /* 남은 영역을 높이 크기로 설정하는 계산 
+    브라우저의 전체 높이 - nav영역 높이 (100px)*/
+    height: calc(100vh - 100px);
+    /*자식 요소를 수직,수평 방향 모두 중앙 배치*/
+    display: flex; justify-content: center; align-items: center;
+}
+/* #top-con{
+
+} */

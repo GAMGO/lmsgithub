@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Start</title>
+    <link rel="icon" sizes="16x16" href="assets\icons\js.svg">
+    <script>
+        "use strict";
+        /*자바 스크립트는 변수를 let/const로 변수 선언하지 않아도 오류가 없을 수도 있으나
+        개발 과정에서 문제가 발생할 수 있고 협업시 어려움이 크기때문에 변수 선언을 강요해야하는데
+        use strict가 그것을 강요하는 코드이다.*/
+        let score = 78;
+        let result = score <0||score>100;
+        if (result)
+        /*result는 실행을 결정하기 위한 조건식 - 참 또는 거짓으로 결과출력
+        관계식1 논리연산 관계식2 (AND 또는 OR)
+        score >= 70 && score < 80
+        && 둘 다 만족 (AND), || 둘 중 하나만 만족 (OR) ==> Ture값 출력*/
+        {
+            console.log('잘못된 점수');
+        }else{
+            console.log('올바른 점수');
+        };
+
+    </script>
+</head>
+<header>
+    <hr />
+    <a href="..\..\html\day02\03Hyperlink.html">메인페이지</a>
+    <hr />
+</header>
+
+<body>
+    <h2 id="title">Java Script</h2>
+    <ul class="list">
+        <li>웹 브라우저에서 동적인 기능을 구현할 수 있는 프로그래밍 언어</li>
+        <li>스크립트 언어 : 이미 존재하는 소프트웨어(브라우저)를 제어하기 위한 용도</li>
+        <li>HTML과 CSS가 내용과 디자인을, JS는 동작을 담당.</li>
+        <li>깃에서 커밋하기 전에는 는 초록색 올리고 나서는 검정색이 되지만 수정하면 갈색으로 파일명을 구분시켜준다.</li>
+    <!-- 왜 안됨? -->
+    </ul>
+    <h3 id="title">전역 객체</h3>
+    <p>객체는 여러가지 데이터를 저장하는 형식임.</p>
+    <p>데이터를 구별하는 이름이 필요한데 다음과 같다 : 속성, 프로퍼티(property)</p>
+    <pre>브라우저의 전역 객체는 여러 속상을 갖는다.
+        - 전역 객체는 브라우저를 제어하는 기능도 가지고 있는데 이것을 메소드(Method)라고 부른다.
+        - 객체의 구성 요소 : <b>속성과 메소드</b>
+    </pre>
+    <ul class="list">
+        <li>screen</li>
+        <li>window</li>
+        <li>document</li>
+    </ul>
+    <!-- document 객체의 주요 메소드 : (테스트는 라이브서버 실행 후 개발자도구 콘솔에서 했음)
+    1. 요소 1개 가져오기
+    document.getElementById('title') : 클래스
+    document.querySelector('#title') : 선택자
+    document.querySelector('ul') : 선택자
+    2. 요소 여러개 가져오기
+    document.querySelectorAll('ul') : 선택자
+    document.querySelectorAll('.list') : 선택자
+    document.getElementsByClassName('list') : 클래스
+    -->
+    <!-- 
+    score=78
+    78
+    score >= 70 && score <80
+    true
+    score = 89
+    89
+    score >= 70 && score <80
+    false
+    -->
+</body>
+
+</html>

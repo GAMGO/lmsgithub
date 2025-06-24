@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" sizes="16x16" href="..\day05\assets\icons\js.svg">
+    <link rel="stylesheet" href="..\day05\assets\EventEX2.css">
+    <!-- <link rel="icon" href=""> -->
+    <title>박스 이동하기</title>
+</head>
+
+<body>
+    <header>
+        <hr />
+        <a href="..\..\html\day02\03Hyperlink.html">메인페이지</a>
+        <hr />
+    </header>
+    <div id="topcon">
+        <!-- 가장 바깥쪽 박스 -->
+        <div class="nav" id="topnav">
+            <button id="up" @click="upclick()">△</button>
+            <button id="down" @click="downclick()">▽</button>
+            <button id="left" @click="Lclick()">◁</button>
+            <button id="right" @click="Rclick()">▷</button>
+        </div>
+    </div>
+    <div class="main" id="field">
+        <div id="box">
+        </div>
+    </div>
+    <script>
+        "use strict"
+        const box = document.getElementById('box')
+        document.body.addEventListener('keydown', e => {
+            const currentL = box.offsetLeft;
+            const currentT = box.offsetTop;
+            const currentH = box.offsetHeight;
+            const currentW = box.offsetWidth;
+            const topline = topnav.offsetHeight;
+            const mapX = topcon.offsetTop;
+            const mapY = topcon.offsetLeft;
+            const parentW = field.offsetWidth;
+            const parentH = field.offsetHeight;
+            console.log(event.target.id);
+            switch (e.key) {
+                case 'w': 
+                if(currentT-topline-10 >= mapX){box.style.top = (currentT - 10) + 'px'}
+                    break;
+                case 'a':
+                if(currentL-10 >= mapY){box.style.left = (currentL - 10) + 'px'}
+                    break;
+                case 's': 
+                if(currentT+currentH < parentH+currentH){box.style.top = (currentT + 10) + 'px'}
+                
+                    break;
+                case 'd': 
+                if(currentL+currentW+10 <= parentW){box.style.left = (currentL + 10) + 'px'}
+                    break;
+                case 'ArrowUp': console.log('박스가 작아집니다.')
+                if(currentH-10>=10){
+                    box.style.height = (currentH - 10) + 'px';
+                }
+                    break;
+
+                case 'ArrowDown': console.log('박스가 커집니다.')
+                    box.style.height = (currentH + 10) + 'px';
+                    break;
+                case 'ArrowLeft': console.log('박스가 넓어집니다.')
+                    box.style.width = (currentW - 10) + 'px';
+                    break;
+                case 'ArrowRight': console.log('박스가 좁아집니다.')
+                    box.style.width = (currentW + 10) + 'px';
+                    break;
+            }
+        }
+        )
+        topcon.addEventListener('click', (event) => {
+            event.stopPropagation();
+            if (event.target.tagName === "BUTTON") {
+                const currentH = box.offsetHeight;
+                const currentW = box.offsetWidth;
+                console.log(event.target.value);
+                /*if (event.target.id === 'up') {
+                    console.log('박스가 작아집니다.')
+                    box.style.height = (currentHeight - 10) + 'px';
+                } else if (event.target.id === 'down') {
+                    console.log('박스가 커집니다.')
+                    box.style.height = (currentHeight + 10) + 'px';
+                } else if (event.target.id === 'left') {
+                    box.style.width = (currentWidth - 10) + 'px';
+                } else if (event.target.id === 'right') {
+                    box.style.width = (currentWidth + 10) + 'px';
+                }*/
+                switch (event.target.id) {
+                    case "up": console.log('박스가 작아집니다.')
+                        box.style.height = (currentH - 10) + 'px';
+                        break;
+                    case 'down': console.log('박스가 커집니다.')
+                        box.style.height = (currentH + 10) + 'px';
+                        break;
+                    case 'left': console.log('박스가 넓어집니다.')
+                        box.style.width = (currentW - 10) + 'px';
+                        break;
+                    case 'right': console.log('박스가 좁아집니다.')
+                        box.style.width = (currentW + 10) + 'px';
+                        break;
+                }//여러가지 조건 검사(동일값 비교)하는 경우 Swtich문으로 대체
+            }
+
+        })
+        /* 자바스크립트에서 박스 요소 다루기
+        크기 (너비,높이), 좌표(left,top)
+        값을 가져올 때 - offserXXX
+        값을 설정할 때 - box.style.XXX = '100px'
+        */
+
+    </script>
+</body>
+
+</html>

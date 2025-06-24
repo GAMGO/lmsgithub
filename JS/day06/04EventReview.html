@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" sizes="16x16" href="..\day05\assets\icons\js.svg">
+    <title>Event Review</title>
+</head>
+
+<body>
+    <header>
+        <hr />
+        <a href="..\..\html\day02\03Hyperlink.html">메인페이지</a>
+        <hr />
+    </header>
+    <h4>06.23</h4>
+    <button id="nbtn">www.naver.com</button>
+    <button id="gbtn">www.google.com</button>
+    <button id="gitbtn">github.com</button>
+    <button id="dbtn">www.daum.net</button>
+    <h3>Event Propagation</h3>
+    <p>
+        입력값은 다르나 자식요소가 많고 각각 하는 작업의 기능이 같을 때 이벤트 전파를 사용
+    </p>
+    <p>
+        자식 이벤트가 생기면 부모요소로 전파 됨. 따라서,
+        부모요소에 이벤트 리스너를 등록하여 자식이벤트를 처리
+    </p>
+    <div id="parent123" style="background-color: aliceblue; padding: 20px;">
+        <button id="www.naver.com">네이버 바로가기</button>
+        <button id="www.google.com">구글 바로가기</button>
+        <button id="github.com">깃허브 바로가기</button>
+        <button id="www.daum.net">다음 바로가기</button>
+
+    </div>
+    <script>
+        // const 생략 가능하나.. 문제점이 많다.
+        "use strict"
+        // const parent = document.getElementById('parent')
+        // 간혹 변수 이름을 많이 사용하는 키워드로 하게되면 중복과 충돌 발생하니 주의할 것.
+        parent123.addEventListener('click', (event) => {
+            event.stopPropagation();
+            console.log("이벤트 타입 : ", event.type);
+            console.log("클릭 위치 : ", event.clientX, event.clientY);
+            console.log("클릭한 요소이름 : ", event.target.tagName);
+            if (event.target.tagName === "BUTTON") {
+                window.open("http://" + event.target.id, '_blank')
+            }
+        })
+        //변수 선언을 강제. (이게 없다면 let,const 없이 변수 사용 가능)
+        // 이벤트 전파 예시 : parent에 이벤트 리스너 등록하기
+        const urlforms = "https://"
+        const naverBtn = document.getElementById('nbtn')
+
+        naverBtn.addEventListener('click', () => {
+            window.open(urlforms + naverBtn.textContent, '_blank')
+        })
+        //Id,변수 이름 같을 때만 생략 가능
+        gbtn.addEventListener('click', () => {
+            window.open(urlforms + gbtn.textContent, '_blank')
+        })
+        gitbtn.addEventListener('click', () => {
+            window.open(urlforms + gitbtn.textContent, '_blank')
+        })
+        dbtn.addEventListener('click', () => {
+            window.open(urlforms + dbtn.textContent, '_blank')
+        })
+        // 
+        parent.addEventListener('click', () => {
+
+        })
+    </script>
+</body>
+
+</html>

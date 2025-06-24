@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="..\day05\assets\imgs\pic_bulboff.gif">
+    <title>껐다 켰다.</title>
+</head>
+
+<body style="background-color: #000;">
+    <header>
+        <hr />
+        <a href="..\..\html\day02\03Hyperlink.html">메인페이지</a>
+        <hr />
+    </header>
+    <div>
+        <button id="btn" @click()>OFF</button>
+        <img src="..\day05\assets\imgs\pic_bulboff.gif" alt="전등 꺼짐" style="cursor: pointer;" width="256px">
+        <hr>
+    </div>
+</body>
+<script>
+    "use strict"
+    const turnonvar = document.getElementById('btn');
+    const img = document.querySelector('img');
+    const icon = document.querySelector('link');
+    const bgsetting = document.querySelector('body');
+    const bulboff = "../day05/assets/imgs/pic_bulboff.gif";
+    const bulbon = "../day05/assets/imgs/pic_bulbon.gif";
+    const light = bgsetting.style.backgroundColor = "#fff";
+    const dark = bgsetting.style.backgroundColor = "#000";
+    let isOn = false; //true(ON), false(OFF)
+    let bulbImg;
+    let bgs;
+    let isOnString;
+    //자주 사용하는 함수를 변수에 저장.
+    const toggleF = () => {
+        if (isOn) {
+            isOnString = 'OFF'
+            bulbImg = bulboff
+            img.alt = "전등 꺼짐"
+            bgs = dark;
+            // img.querySelector("alt") = "전등 꺼짐"
+        } else {
+            isOnString = 'ON'
+            bulbImg = bulbon
+            img.alt = "전등 켜짐"
+            bgs = light;
+
+
+            //  img.querySelector("alt")  = "전등 켜짐"
+        }
+        turnonvar.textContent = isOnString
+        img.src = bulbImg
+        icon.href = bulbImg
+        bgsetting.style.backgroundColor = bgs
+        isOn = !isOn
+    }
+    btn.addEventListener('click', toggleF);
+    img.addEventListener('click', toggleF);
+</script>
+
+</html>

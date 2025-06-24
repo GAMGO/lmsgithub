@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" sizes="16x16" href="assets\icons\js.svg">
+    <title>Event Property</title>
+</head>
+
+<body>
+    <header>
+        <hr />
+        <a href="..\..\html\day02\03Hyperlink.html">메인페이지</a>
+        <hr />
+    </header>
+    <div id="parent" style="background-color: aquamarine;"> <!-- 부모 요소 -->
+        <button id="btn">TEST BTN A</button>
+        <button id="btn">TEST BTN B</button>
+        <button id="btn">TEST BTN C</button>
+        <hr>
+        <input id="url" placeholder='URL입력'>
+    </div>
+    <script>
+        // 이벤트는 자식요소 -> 부모요소로 전파된다.따라서, 자식 요소의 Event처리를 부모가 할 수 있다.
+        document.getElementById('parent').addEventListener('click', function (event) {
+            console.log(event.target.tagName)
+            if (event.target.tagName == 'BUTTON') {
+                alert('자식 요소 버튼이 눌렸다.' + event.target.textContent);
+            } else if (event.target.tagName == 'INPUT') {
+                confirm('입력 준비 됐나?')
+            } else {
+
+            }
+        })
+        /*document.getElementById('url').addEventListener('keydown', function (event) {
+            console.log(event)
+        })
+
+        const btn = document.getElementById('btn')
+        btn.addEventListener('click', function (event) {
+            // 이벤트 정보를 event 변수에 저장
+            console.log(event)
+
+        })*/
+    </script>
+</body>
+
+</html>
