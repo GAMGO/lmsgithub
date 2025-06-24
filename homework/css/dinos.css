@@ -1,18 +1,24 @@
-*{
+* {
     box-sizing: border-box;
-    margin:0;
+    margin: 0;
     padding: 0;
-    border:0;
-    font:inherit;
+    border: 0;
+    font: inherit;
     vertical-align: baseline;
 }
+
 #header {
     position: sticky;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 9999;
+    /* z-index: 0; */
     display: inherit;
+}
+
+html,
+body {
+    font-size: 10px;
 }
 
 ul,
@@ -20,6 +26,7 @@ ol {
     margin: 0;
     padding: 0;
     list-style: none;
+    text-decoration-line: none;
 }
 
 div {
@@ -36,7 +43,7 @@ div {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 128rem;
+    width: 100rem;
     height: 3.6rem;
     padding: 0 4rem;
     margin: 0 auto;
@@ -46,6 +53,7 @@ div {
     display: flex;
     align-items: center;
     height: 100%;
+
 }
 
 .sitetab>li {
@@ -56,25 +64,28 @@ div {
     color: #fff;
     cursor: pointer;
 }
-.usertab{
+
+.usertab {
     display: flex;
     align-items: center;
 }
-.usertab > li{
+
+.usertab>li {
     position: relative;
     padding: 0 1rem;
     font-size: 1.2rem;
     color: #fff;
     cursor: pointer;
 }
-.usertab>li+li::before{
+
+.usertab>li+li::before {
     content: '';
     position: absolute;
     top: 50%;
     left: 0;
     width: .1rem;
     height: 1rem;
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(255, 255, 255, 0.5);
     transform: translateY(-50%);
 }
 
@@ -91,7 +102,7 @@ div {
     align-items: center;
     /*가운데로 정렬*/
     justify-content: space-between;
-    width: 128rem;
+    width: 100rem;
     height: 9.4rem;
     padding: 0 4rem;
     margin: 0 auto;
@@ -100,6 +111,7 @@ div {
 
 img {
     border-style: none;
+    width: 150px;
 }
 
 .gnb-wrap {
@@ -108,7 +120,8 @@ img {
     justify-content: space-between;
     column-gap: 10rem;
 }
-.gnb-wrap > li{
+
+.gnb-wrap>li {
     font-size: 1.6rem;
     color: #fff;
     font-weight: 500;
@@ -120,6 +133,76 @@ img {
     align-items: center;
     column-gap: 6rem;
 }
-.gnb-ico > li{
 
+.gnd-ico img {
+    width: 24px;
+}
+
+.product-list {
+    justify-self: center;
+    list-style: none;
+    width: 950px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0;
+}
+
+.product-list>li {
+    width: 230px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* hover는 가상 선택자, 요소에 마우스 오버될 때 보이는 스타일 */
+
+.product-list img {
+    width: 100%;
+    height: 200px;
+    border: 1px solid #0000002F;
+    display: flex;
+    transition: transform .2s ease, border-color .5s ease;
+}
+
+.product-list img:hover {
+    border-color: #007bff;
+    transform: scale(1.3);
+    cursor: pointer;
+}
+
+.product-name {
+    margin: 10px 0px 5px;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.product-price {
+    font-weight: 800;
+    font-size: 15px;
+}
+
+.badge {
+
+    background: linear-gradient(#007bff, #3c41cf);
+    color: #fff;
+    font-size: 1.6rem;
+    margin-top: 5px;
+    border-radius: 7px;
+}
+
+/* 반응형 : 470px 이하가 되면 -> 2개의 컬럼 ([230*2]+10)만 들어가게 디자인하고 싶다!
+ @media라는 키워드를 사용*/
+@media (max-width:540px) {
+    #header {
+        width: 100%;
+        flex-shrink: 0;
+    }
+
+    .product-list {
+        width: 100%;
+        flex-shrink: 0;
+    }
 }
