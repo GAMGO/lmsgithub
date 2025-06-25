@@ -11,9 +11,11 @@ const tom = document.getElementById('tomorrow');
 //각 표의 아이디 불러오기
 const timeTr = document.getElementById('times');
 const todoTr = document.getElementById('toDo');
+const changeT = document.getElementById('titles');
 function timelines(timeArr, todoArr, titles) {
     timeTr.innerHTML = '<th class="titleTr tablesets">TIME</th>';
     todoTr.innerHTML = '<th class="titleTr tablesets">TODO</th>';
+    changeT.textContent = titles + '시간표'
     for (let t of timeArr) {
         const td = document.createElement('td');
         td.textContent = t;
