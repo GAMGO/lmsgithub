@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열과 반복문</title>
+    <link rel="icon" href="assets/icons/gear.png">
+</head>
+
+<body>
+    <header>
+        <hr />
+        <a href="../../html/day02/03Hyperlink.html">메인페이지</a>
+        <hr />
+    </header>
+    <ul id="twice" style="list-style: none;">
+        <li class="members">1</li>
+        <li class="members">2</li>
+        <li class="members">3</li>
+        <li class="members">4</li>
+    </ul>
+    <script>
+        "use strict"
+        const twiceLi = document.querySelectorAll('ul#twice>li');
+        // 배열과 유사한 List자료구조로 저장함.
+        /* console.log(twiceLi[0]);
+        const twiceLi2 = document.getElementsByTagName('li');
+        console.log(twiceLi2[0]);
+        const twiceLi3 = document.querySelector('.members');
+        console.log(twiceLi3[0]);*/
+        /*여러개의 태그요소를 가져오는 메소드 -> 배열처럼 인덱스를 사용하여 특정 요소만 가져오기*/
+        const members = ['민아', '모모', '나연', '다현', '지효'];
+        //document.write('<h3>트와이스 맴버 : </h3>' + members);
+        members.push('사나')
+       /* for (let i = 0; i < members.length; i++) {
+            document.write(`<h4>${members[i]}</h4>`)
+        };
+        // document.write(`<h4>${members[i]}</h4>`)
+        for(let i =0;i<twiceLi.length;i++){
+            console.log(twiceLi[i].textContent);
+            twiceLi[i].textContent=members[i]
+            twiceLi[i].style.color = 'blue'
+        };*/
+        // 배열에서 사용하는 for문 형식 - 인덱스 지정없이 하나씩 가져오기
+        for(let elem of twiceLi){
+            console.log(elem);
+        }for(let val of members){
+            console.log(val);
+        };
+    </script>
+</body>
+
+</html>

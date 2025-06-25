@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Table</title>
+  <link rel="icon" sizes="16x16 " href="assets/icons/exel.png">
+  <script src="./js/16ex.js" defer></script>
+  <style>
+    table {
+      border: 1px solid red;
+      border-collapse: collapse;
+      width: 700px;
+      margin: 30px auto;
+      /* 가로 방향 여백을 알아서 자동 설정(양쪽 여백값 동일하게) 
+         table 의 너비가 100% 보다 작을 때 가능
+      */
+    }
+
+    h3 {
+      text-align: center;
+    }
+
+    tr,
+    td {
+      border: 1px solid tomato;
+    }
+
+    th {
+      color: white;
+      background-color: tomato;
+      width: 100px;
+      /* text-align: center; */
+    }
+
+    td {
+      text-align: center;
+      width: 100px;
+      padding: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <hr />
+    <a href="..\..\html\day02\03Hyperlink.html">메인페이지</a>
+    <hr />
+  </header>
+  <h3 id="title">오늘 시간표</h3>
+  <table>
+    <tr id="time">
+      <th>TIME</th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr id="todo">
+      <th>TODO</th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+  <button id="tomorrow">내일 시간표</button>
+  <button id="today">오늘 시간표</button>
+
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/icons/objectbox.png">
+    <title>Object Document</title>
+</head>
+
+<body>
+    <header>
+        <hr />
+        <a href="..\..\html\day02\03Hyperlink.html">메인페이지</a>
+        <hr />
+    </header>
+    <p>
+        객체는 배열보다 더 많은 기능을 갖는 자료구조 입니다.
+    </p>
+    <h4>객체 구성요소</h4>
+    <ul>
+        <li>속성 (객체의 특징 데이터) - 속성이름과 값 한 쌍으로 표현</li>
+        <li>메소드 (객체의 기능/동작)</li>
+    </ul>
+    <p>자바 스크립트는 객체 만들 때 {}기호로 정의</p>
+    <script>
+        //sana 변수에 객체 할당. const선언은 객체 자체를 바꿀 순 없음. 속성은 바꿀 수 있음.
+        const sana = { name: '김사나', age: 22, local: "Gyeonggi-do", height: 160.9 };
+        sana.height = 165.8; //객체변수명.객체속성
+        console.log(sana.toString());//객체의 ToString() 메소드 실행
+        console.log(sana);
+        //속성 값 가져오기
+        console.log(sana['name'], sana['age'], sana['local'], sana['height'])
+        //객체는 속성은 저장이 필요한 데이터에 임의로 정함.
+        const momo = {
+            name: "박모모",
+            age: 22,
+            birth: "2000-11-12",
+            local: "Seoul",
+            nationaliy: "Japan",
+            say: function (emoji) {
+                //속상값이 힘수 정의 -> 메소드
+                alert("hello~!!" + emoji)
+            }
+        };
+        console.log(momo.name, momo.age, momo.nationaliy);
+        momo.say(); //필요한 인자값이 없으면 emoji는 'undefined'.
+        momo.say('😊')
+
+        //객체에 시용히는 반복문
+        for (let key in sana) {
+            console.log("key=", key, "value", sana[key]);
+        }
+    </script>
+</body>
+
+</html>
