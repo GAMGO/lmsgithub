@@ -4,15 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="\day02\datas\list.png" />
+    <link rel="icon" href="../day02/datas/list.png" />
     <link rel="stylesheet" href="assets/bugpagestyle.css" />
     <title>Bug List</title>
 </head>
 <header>
     <hr />
-    <a href="..\day02\03Hyperlink.html">메인페이지</a>
+    <a href="../day02/03Hyperlink.html">메인페이지</a>
     <hr />
 </header>
+
 <body>
     <table class="title">
         <th>버그 리스트
@@ -26,8 +27,28 @@
                     <div class="hr-sect">2025.06.19 : 03Hyperlink 날짜별 줄 bold 버그</div>
                     <p>웹사이트 크기 110%로 볼 경우 6월19일 이후 구분줄이 두꺼워보이는 버그가 있음.</p>
                     <p>110%아닌 그 이하,이상 조정시 없어지는 것으로 미루어보아 디스플레이 성능 또는 렌더링 문제로 보고있음.</p>
-                    <p><b>*해결됨 Buglist에 사용된 bugpagestyle처럼 03.css에 구분선 관련 설정이 중복되어서 일어난 현상</b></a></p>
+                    <p><b>*해결 Buglist에 사용된 bugpagestyle처럼 03.css에 구분선 관련 설정이 중복되어서 일어난 현상</b></a></p>
                 </li>
+                <li>
+                    <div class="hr-sect">2025.06.24 : 14ex.js addEventListener 동작 안됨.</div>
+                    <p>계산기 제작중 크롬에서 addEventListener가 X표시로 동작되지 않는 문제가 발생함.</p>
+                    <p><b>*해결 HTML에서 script Js파일을 body실행 전에 불러와야하기 때문에 defer속성을 적용해야함.</b></a></p>
+                </li>
+                <li>
+                    <div class="hr-sect">2025.06.25 : 15~16 시간표 코드 오류</div>
+                    <p>선생님께서 제작하신 코드와 일치하도록 제작했으나 표가 제대로 만들어지지 않음.</p>
+                    <p>github에 올라온 수업본 다운로드 받고 실행했으나 여전히 코드가 정상 실행되지 않음.</p>
+                    <p><b>*해결 파일을 다른곳으로 옮겼다가 리로드 후 for문에서 실수한 부분없는지 확인 후 재작성할것.</b></a></p>
+                </li>
+                <li>
+                    <div class="hr-sect">2025.06.25 : github에서 내려받은 코드 오류</div>
+                    <p>선생님께서 제작하신 코드를 불러왔으나 해당 코드만 실행이 안됨</p>
+                    <p>이유는 알 수 없으나 15~16번 html은 작동 잘 됨.</p>
+                    <p><b>*해결중</b></a></p>
+                </li>
+                <li></li>
+                <li></li>
+                <li></li>
             </ol>
         </th>
     </table>
