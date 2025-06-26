@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/icons/watch.png">
+    <link rel="stylesheet" href="assets/css/22ex.css">
+    <title>내가 만든 타이머</title>
+</head>
+
+<body>
+    <header>
+        <hr />
+        <a href="..\..\HTML\day02\03Hyperlink.html">메인페이지</a>
+        <hr />
+    </header>
+    <h4 id="now"></h4>
+    <hr>
+    <h2>타이머 설정</h2>
+    <div>
+        <label for="seconds">초:</label>
+        <input type="number" id="seconds" value="0">
+        <button id="startBtn">타이머 시작</button>
+        <button id="stopBtn">타이머 중지</button>
+    </div>
+    <div id="countdown"> </div>
+</body>
+<script>
+
+    let timerInterval //타이머 객체 설정 인터벌 할당
+    const now = document.getElementById('now')
+    now.textContent = new Date();
+
+    window.setInterval(() => {
+        now.textContent = new Date()
+    }, 1000);
+
+    const startBtn = document.getElementById('startBtn')
+    const stopBtn = document.getElementById('stopBtn')
+
+    function btnToggle(isOn){
+        //disabled는 버튼의 비활성화 속성
+        startBtn.disabled = isOn;
+        stopBtn.disabled = !isOn;
+    }
+    btnToggle(false)// 시작 활성화, 중지 비활성화
+
+    stopBtn.addEventListener('click', () => {
+        window.clearInterval(timerInterval)
+        document.getElementById('seconds').value=0;
+        btnToggle(false)
+    })
+
+    startBtn.addEventListener('click', () => {
+        let timeSeconds = Number(document.getElementById('seconds').value);
+        
+        if (timeSeconds <= 0) {
+
+            alert('0보다 큰 숫자를 기입')
+            return;
+        }btnToggle(true)
+        updateCount(timeSeconds);
+        timerInterval = window.setInterval(() => {
+            timeSeconds = timeSeconds - 1;
+            if (timeSeconds < 0) {
+                alert('TIME OUT')
+                window.clearInterval(timerInterval);
+                document.getElementById('seconds').value=0;
+                btnToggle(false);
+            } else {
+                updateCount(timeSeconds);
+            };
+        }, 1000);
+    }) //시작버튼 끝
+
+    function updateCount(timeSeconds) {
+        document.getElementById('countdown').textContent
+            = `남은시간 : 00:${timeSeconds.toString().padStart(2,'0')}`;
+    }
+</script>
+
+</html>
