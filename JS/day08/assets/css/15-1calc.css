@@ -11,13 +11,13 @@
 input {
     padding: 7px;
 }
-
+/* 
 table {
-    /* margin:auto; */
-    /* 가로 방향 여백을 알아서 자동 설정 (양쪽 값 동일하게)
-    table의 너비가 100%보다 작을 때 가능 */
-    border-collapse: 10px;
-}
+     margin:auto;
+     가로 방향 여백을 알아서 자동 설정 (양쪽 값 동일하게)
+    table의 너비가 100%보다 작을 때 가능
+     border-collapse: 10px; 
+} */
 
 .centerset {
     text-align: center;

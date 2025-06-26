@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" href="assets/icons/callback.png">
+    <link rel="stylesheet" href="assets/css/22ex.css">
+</head>
+
+<body>
+    <header>
+        <hr />
+        <a href="..\..\HTML\day02\03Hyperlink.html">메인페이지</a>
+        <hr />
+    </header>
+    <p>window.setTimeout 테스트 - 브라우저에서 제공되는 기능. 시간을 브라우저가 체크</p>
+    <div>시작시간:</div>
+    <div id="startDiv"></div>
+    <div>현재시간:</div>
+    <div id="nowDiv"></div>
+    <button id="stopBtn">중지</button>
+    
+ <!-- 처음 화면에는 안보이는 요소  -->
+    <div id="sampleModal" class="modal">
+        <div class="modalContent">
+            <h3>TIME OUT!</h3>
+            <button id="closeBtn">닫기</button>
+        </div>
+    </div>
+    <script>
+        const start = document.getElementById('startDiv');
+        const now = document.getElementById('nowDiv');
+        start.textContent = "3초 기다리면 현재시간 나옴"
+
+        document.getElementById('closeBtn').addEventListener('click', () => {
+            document.getElementById('sampleModal').classList.remove('show') //클래스 속성에서 제거
+        })
+
+        //현재시간을 가져올때는 new Date() 날짜 생성 함수 사용.
+        window.setTimeout(() => {
+            start.textContent = new Date();
+            document.getElementById('sampleModal').classList.add('show') //클래스 속성에 추가
+        }, 3000) //3000ms = 3초
+
+        // 인터벌 객체를 변수에 할당하여 인터벌 동작을 중지할 때 사용합니다.
+        const testInterval = window.setInterval(() => {
+            now.textContent = new Date()
+        },1000)
+        document.getElementById('stopBtn').addEventListener('click', () => {
+            window.clearInterval(testInterval)//인터벌 동작을 중지 (브라우저의 타이머 제거)
+        })
+    </script>
+</body>
+
+</html>
