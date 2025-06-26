@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>클래스 속성</title>
+    <link rel="icon" href="../day02/datas/list.png"/>
+    <style>
+        td {
+            width: 200px;
+            height: 120px;
+            text-align: center;
+            font-size: 24px;
+            color: blue;
+            border: 1px solid blue;
+            /* 테두리: 굵기 모양 색상 */
+        }
+
+        table {
+            border: 10px dotted gold;
+        }
+
+        td:hover {
+            background-color: rgb(255, 145, 0);
+            color: white;
+        }
+
+        .green:hover {
+            background-color: greenyellow;
+            
+        }
+
+        .green:active,td:active,td.pink:active {
+            background-color: rgb(0, 255, 106);
+        }
+
+        #dotted1 {
+            border: 2px dotted orange
+        }
+
+        /* td태그중 Class값이 pink를 선택. */
+        td.pink:hover {
+            background-color: pink;
+            font-weight: 900;
+        }
+        td:first-child{
+            background-color: rgb(117, 146, 96);
+        }
+        td:last-child{
+            background-color: black;
+        }
+    </style>
+</head>
+<header>
+    <hr />
+    <a href="../day02/03Hyperlink.html">메인페이지</a>
+    <hr />
+</header>
+
+<body>
+    <!-- CSS에서 특정 요소를 구체적으로 선택할 때,
+      | 1. Class 속성 사용 - 그룹으로 설정, 여러개의 요소 선택시 같은 이름 부여
+        - Css에서 특정 클래스 지정 기호는 '.'
+      | 2. id 속성 사용 - 단독으로 설정, 한 개의 요소만 선택시 사용
+      태그로만 선택하기엔 한계가 있기 때문에 위와 같은 2개의 속성값으로 태그의 이름(식별자)을 설정한다.
+        - Css에서 특정 클래스 지정 기호는 "#"
+      -->
+    <table>
+        <th>표만들기</th>
+        <tr>
+            <td>1</td>
+            <td class="green">2</td>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <!-- JS에서 id속성값을 많이 사용. 같은 id 이름을 여러개 설정하면 안됨. -->
+            <td>5</td>
+            <td>6</td>
+            <td class="pink">7</td>
+            <td class="green">8</td>
+        </tr>
+        <tr>
+            <td class="green">9</td>
+            <td id="dotted1">10</td>
+            <td>11</td>
+            <td>12</td>
+        </tr>
+    </table>
+    <p class="pink">클래스 속성 테스트1 </p>
+    <p class="green">클래스 속성 테스트2 </p>
+</body>
+
+</html>
+<!-- 
+
+    CSS 또는 Js에서 요소 선택하는 방식 (선택자)
+    | 1. 태그 이름
+    | 2. 자식/자손 요소 선택 : 기호 ">"/" "
+    | 3. 자식의 위치 선택 : nth-child(n) & nth-of-type(n), first-child & first-of-type, last-child & last-of-type
+    | 4. Class 또는 id - 단, id는 같은 이름 변수 사용 금지.
+
+-->

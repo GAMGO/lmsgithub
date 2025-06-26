@@ -1,0 +1,91 @@
+        * {
+
+            box-sizing: border-box;
+            /*요소의 가로,세로 
+    크기에 (padding과 border 포함)*/
+        }
+        html, body{
+            padding: 0;
+            margin: 0;
+        }
+        .hr-sect {
+            width: 100%;
+            color: #0000005b;
+            font-weight: 800;
+            display: flex;
+            flex-basis: 20%;
+            align-items: center;
+        }
+
+        .hr-sect::before,
+        .hr-sect::after {
+            flex-grow: 1;
+            background: #0000002F;
+            height: 1px;
+            font-size: 1px;
+            line-height: 0px;
+            margin: 0px 16px;
+            content: "";
+
+        }
+
+        .icontrans {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+
+        div img {
+            border: 2px solid #2db400;
+            transition: transform 0.5s ease, border-color 0.2s ease;
+            margin: 10px;
+        }
+
+        div img:hover {
+            transform: scale(1.5);
+            border: 2px solid #0000FF;
+        }
+
+
+        .pointer {
+            cursor: pointer;
+        }
+
+        .h2font {
+            font-size: 20px;
+            color: #0000FF;
+            font-weight: 800;
+        }
+
+        footer ul {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        footer>div {
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-content: center;
+            margin: auto;
+
+        }
+
+        footer li {
+            list-style: none;
+            padding: 20px;
+        }
+
+        .fontstp a {
+            text-decoration-line: none;
+            padding: 5px;
+            border: 2px solid #0000FF;
+            color: black;
+            transition: transform .2s ease, border-color 0.5s ease, border-radius 0.4s ease;
+        }
+
+        .fontstp a:hover {
+            transform: scale(1.2);
+            border-radius: 15px;
+            border-color: #FF000b;
+            color: #FF000b;
+        }

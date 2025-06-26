@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../day02/datas/list.png" />
+    <title>Sign up page</title>
+</head>
+<header>
+    <hr />
+    <a href="../day02/03Hyperlink.html">메인페이지</a>
+    <hr />
+</header>
+<body>
+    <h3>회원가입해보자!</h3>
+    <hr>
+    <form action="10-1success.html">
+        <table class="align">
+            <tr>
+                <!-- 모바일은 PC처럼 섬세한 클릭이 어렵기에 이런식으로 focusing시킬 때 쓴다고함.
+                 처음해보는 태그일수록 연습은 기본이지만 특히 Label[레이블/라벨] 발음으로 햇갈릴 수 있으니 충분한 연습을 해야한다. -->
+                <th><label for="userid">USER ID : </label></th>
+                <td><input type="text" name="userid" id="userid" placeholder="ID" required>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="username">NAME : </label></th>
+                <td><input type="text" name="username" id="username" placeholder="Insert your name">
+                </td>
+            </tr>
+            <tr>
+                <th><label for="pw">PASSWORDS : </label></th>
+                <td><input type="password" name="pw" id="pw" placeholder="Passwords">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <!-- radio : 단일 선택 - 같은 그룹의 선택일 때 name 속성값을 동일하게 해야한다. 
+                     Value는 반드시 설정하여 선택핼을때 보낼 값을 지정해야함.-->
+                    <input type="radio" name="age" id="ageY" value="Authorized">
+                    <label for="ageY">Over 14 years old</label>
+                    <input type="radio" name="age" id="ageN" value="Denied">
+                    <label for="ageN">Under 14 year olds.</label>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="address">Location</label></th>
+                <td><select name="address" id="address">
+                        <option value="seoul">Seoul</option>
+                        <option value="gyeonggi">Gyeonggi-do</option>
+                        <option value="kwangwon">Kwangwon-do</option>
+                        <option value="incheon">Incheon</option>
+                        <option value="chingcheong">ChungCheong-do</option>
+                        <option value="jeolla">Jeolla-do</option>
+                        <option value="gyeongsang">Gyeongsang-do</option>
+                    </select></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <!--
+                    form안에는 type 생략가능.기본적으로 submit이 default이다.
+                    데이터를 서버를 보내려면 : Submit
+                     
+                    -->
+                    <button>Save</button>
+                    <button type="reset">Reset</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <!-- Checkbox : 다중 선택 (필수선택이 아님 - 유저가 선택 안해도 됨 -) -->
+                    <span>Q.1 - What's your Interest & Hobby?▶</span>
+                    <input type="checkbox" name="interest" id="sport" value="sport">
+                    <label for="sport">Sports</label>
+                    <input type="checkbox" name="interest" id="cooking" value="cook">
+                    <label for="cooking">Cooking</label>
+                    <input type="checkbox" name="interest" id="singing" value="sing">
+                    <label for="singing">Singing</label>
+                    <input type="checkbox" name="interest" id="reading" value="read">
+                    <label for="reading">Reading</label>
+                    <input type="checkbox" name="interest" id="drawing" value="draw">
+                    <label for="drawing">Drawing</label>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

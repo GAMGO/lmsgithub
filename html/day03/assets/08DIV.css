@@ -1,0 +1,70 @@
+div.container {
+    width: 400px;
+    margin: 5%;
+    border: 2px solid #264de4;
+    /* float:left; */
+    font-weight: 500;
+}
+
+div.htmlcontainer {
+    width: 400px;
+    margin: 5%;
+    border: 2px solid #e54c21;
+    /* float: left; */
+       font-weight: 500;
+}
+
+div.header {
+    padding: 3px;
+}
+
+div.csslogo {
+    object-fit: contain;
+}
+
+div.htmllogo {
+    object-fit: contain;
+}
+
+
+div.tables>div {
+    border-bottom: 1px solid #00000027
+}
+
+div.homepage {
+    padding-top: 2px;
+}
+
+/* 중복되는 속성은 따로 정의. */
+div.bottom {
+    border-bottom: 1px solid #00000027;
+}
+
+div.textaligns {
+    text-align: center;
+}
+
+a.nonlink {
+    text-decoration-line: none;
+}
+
+a.link:hover {
+    text-decoration-line: underline;
+}
+
+span {
+    display: inline-block;
+    padding: 4px 10px;
+
+}
+
+span.title {
+    width: 25%;
+    border-right: 1px solid #00000027;
+    text-align: center;
+    font-weight: 600;
+    font-family: "Malgun Gothic";
+
+}
+
+/* 크기 단위 %로 할 경우 부모 container요소의 크기를 기준으로 비율을 정함. */
