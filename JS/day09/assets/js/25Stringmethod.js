@@ -63,5 +63,5 @@ var includer = text.includes("world");
 console.log('"World"가 포함되어 있는가? =>',includer);
 
 function line(){
-    console.log('---------------------------------------------------------\n');
+    console.log('---------------------------------------------------------');
 }line();
