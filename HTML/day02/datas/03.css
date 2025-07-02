@@ -4,10 +4,13 @@
             /*요소의 가로,세로 
     크기에 (padding과 border 포함)*/
         }
-        html, body{
+
+        html,
+        body {
             padding: 0;
             margin: 0;
         }
+
         .hr-sect {
             width: 100%;
             color: #0000005b;
@@ -51,6 +54,11 @@
             cursor: pointer;
         }
 
+        h2 {
+            margin: 20px;
+            color: blue;
+        }
+
         .h2font {
             font-size: 20px;
             color: #0000FF;
@@ -88,4 +96,25 @@
             border-radius: 15px;
             border-color: #FF000b;
             color: #FF000b;
+        }
+
+        @media (max-width:620px) {
+            #header {
+                width: 100%;
+                flex-shrink: 0;
+            }
+
+            footer {
+                width: 100%;
+                flex-shrink: 0;
+            }
+
+            footer li {
+                padding: auto;
+            }
+
+            footer ul {
+                display: block;
+                justify-content: left;
+            }
         }
