@@ -99,23 +99,17 @@
         }
 
         @media (max-width:730px) {
+
             html,
-        body {
+            body {
                 width: 100%;
                 flex-shrink: 0;
             }
-
-            footer {
-                width: 100%;
-                flex-shrink: 0;
-            }
-
             footer li {
                 padding: auto;
             }
 
             footer ul {
                 display: block;
-                justify-content: left;
             }
         }
