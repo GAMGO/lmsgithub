@@ -99,7 +99,8 @@
         }
 
         @media (max-width:730px) {
-            #header {
+            html,
+        body {
                 width: 100%;
                 flex-shrink: 0;
             }
