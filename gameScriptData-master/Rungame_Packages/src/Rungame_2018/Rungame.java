@@ -1,4 +1,4 @@
-package Rungame_2018;
+
 import javax.swing.*;
 
 public class Rungame{

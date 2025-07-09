@@ -1,11 +1,10 @@
-package Rungame_2018;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
 public class Board extends JPanel implements ActionListener{
-	Car p; //Car.javaÀÇ ½ºÅ©¸³Æ®¸¦ »ç¿ëÇÏ±â À§ÇÑ º¯¼öÀÌ¸§Àº p.
+	Car p; 
 	Image img;
 	Timer time;
 	
@@ -17,7 +16,7 @@ public class Board extends JPanel implements ActionListener{
 		time.start();
 	}
 	public void update (Graphics g) {
-		ImageIcon i = new ImageIcon ("D:\\java\\Rungame_Packages\\data\\road.png");
+		ImageIcon i = new ImageIcon ("C:\\Users\\C104\\Downloads\\gameScriptData-master\\Rungame_Packages\\data\\road.png");
 		img = i.getImage();
 	}
 	
@@ -31,17 +30,14 @@ public class Board extends JPanel implements ActionListener{
 			p.x = 420;
 		}else if (p.x<=149){
 			p.x = 150;
-		//´Ù½Ã ±×·ÁÁö´Â À§Ä¡°ªÀ» ¾Ë¾Æº¸·Á¸é Á÷Á¢ ÇÁ¸°Æ®ÇØº¼°Í! ÀÚµ¿Â÷°¡ µµ·Î ¹ÛÀ» ¸ø³ª°¡°Ô ÇÏÀÚ  ¹æ¹ýÀÌ¾ß ¸¹Áö¸¸ ´Ù¸¥ ¹æ¹ýÀÌ »ý°¢³ªÁö ¾ÊÀ¸¹Ç·Î...
-		//if¹®À» »ç¿ëÇØ¼­ µµ·Î°¡ ±×·ÁÁø ºÎºÐÀÇ ½ÃÀÛ°ú ³¡ºÎºÐÀ» Ã£¾Æ ÀÔ·ÂÇØ¼­ °¢ ³¡ºÎºÐÀÇ -1 ÇÈ¼¿¿¡ Â÷·®À» ´Ù½Ã ±×¸®°Ô ÇÑ´Ù.
 		}else if (p.x<=230){
-			System.out.println("¿ªÁÖÇà");
+			System.out.println("ì—­ì£¼í–‰");
 		}
 		repaint();
 		//-p.getY()
 		
 	}
 	@Override
-	// swing¿¡¼± paint°¡ ¾Æ´Ñ paintComponent¸¦ »ç¿ëÇÑ´Ù.
 	public void paintComponent (Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;
