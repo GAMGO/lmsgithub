@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" sizes="16x16" href="href="assets\icons\js.svg"">
+    <link rel="icon" sizes="16x16" href="assets\icons\js.svg">
     <title>Event</title>
     <script>
         "use strict"
@@ -25,11 +25,11 @@
 </head>
 
 <body>
-  <header>
-    <hr />
-    <a href="../../index.html">메인페이지</a>
-    <hr />
-  </header>
+    <header>
+        <hr />
+        <a href="..\..\html\day02\03Hyperlink.html">메인페이지</a>
+        <hr />
+    </header>
     <p>사용자가 일으키는 동작</p>
     <ul>
         <li>button click</li>
@@ -51,7 +51,7 @@
      innerHTML 속성 : 시작태그와 종료태그 사이의 요소(태그 포함) 
      innerHTML의 경우 script 태그가 들어갈 수 있어서 공격하게 되면 망가질 가능성이 크므로 textContent가 안전하다고 하는 것.-->
     <hr>
-        <button id="naver">http://www.naver.com</button>
+    <button id="naver">http://www.naver.com</button>
     <hr />
     <input type="text" id="client" placeholder="인사할 고객의 이름을 기입하라.">
     <!-- input에 입력한 내용은 Value속성에 저장됨. -->
@@ -75,8 +75,8 @@
     <script>
         const naverBtn = document.getElementById('naver');
         naverBtn.addEventListener(
-            'click',function(){
-                window.open(naverBtn.textContent,'_blank');
+            'click', function () {
+                window.open(naverBtn.textContent, '_blank');
             }
         );
         const greet = document.getElementById('greet');
@@ -98,4 +98,5 @@
         )
     </script>
 </body>
+
 </html>

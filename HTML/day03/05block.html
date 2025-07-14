@@ -1,52 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../day02/datas/block.webp" />
     <title>Document</title>
 </head>
-
-<body>
-  <header>
+<header>
     <hr />
     <a href="../../index.html">메인페이지</a>
     <hr />
-  </header>
+</header>
+
+<body>
     <h2>블록요소 - div, p, pre, h1~h6,</h2>
-    <p>블록요소는 문서의 내용을 표시하는 구역을 설정하는 것. 시맨틱 태그(header,nav,main,article...etc), div와 거의 동일한 성격을 갖고 의미있는 단어로 표시를 단어를 사용한 것 뿐이다.</p>
+    <p>블록요소는 문서의 내용을 표시하는 구역을 설정하는 것. 시맨틱 태그(header,nav,main,article...etc), div와 거의 동일한 성격을 갖고 의미있는 단어로 표시를 단어를 사용한 것
+        뿐이다.</p>
     <p>블록요소는 기본적으로 너비(width)는 브라우저 크기의 100%, 높이(height)는 자식요소의 크기</p>
     <p>블록요소의 크기 변경을 위해 width,height,<a style="color: red;"><strong>스타일</strong></a>을 직접 설정할 것.</p>
     <P>문서 최상위 요소인 Body의 너비도 100%, 높이도 자식요소의 크기</P>
     <div style="background-color: bisque; width: 300px;height: 300px;">
         Div 첫번째 테스트 - px 단위를 사용하면 항상 고정된 크기를 설정합니다. (절대값)
     </div>
-    <div style = "background-color: coral; width: 45%; padding: 5%;">
+    <div style="background-color: coral; width: 45%; padding: 5%;">
         <p>Box Model (레이아웃과 관련된 속성)</p>
         <p>Div 두번째 테스트 - % 단위를 사용하면 부모요소의 크기를 기준으로 설정합니다.<a style="color: gray;"">(상대값)</a></p>
-        <p>해당 Div부모요소는 body, body의 widht(너비)는 브라우저의 <a style="color: red;"><b>100%</b></a></p>
-        <p>body의 높이는 height(높이)는 자식요소의 크기만큼 설정됨.</p> 
-        <ul> 
-         <li>width : 너비</li>
-         <li>height : 높이</li>
-         <li>padding : 안쪽 여백</li>
-         <li>margin : 바깥 여백</li>
-         <li>border : 테두리 부분</li>
-         <ul>
-         <br>
-        <p>==> 박스의 크기를 결정하는 값은? 너비(width),높이(height),패딩(padding),테두리(border)</p>
-        <p>ex -- width 200px; height 300px; padding 30px; border 2px;</p>
-        <a style="font-weight: 300;">전체 박스크기 = [width+{(padding*2)+(border*2)}]+[height+{(padding*2)+(border*2)})</a>
+        <p>해당 Div부모요소는 body, body의 widht(너비)는 브라우저의 <a style=" color: red;"><b>100%</b></a></p>
+        <p>body의 높이는 height(높이)는 자식요소의 크기만큼 설정됨.</p>
+        <ul>
+            <li>width : 너비</li>
+            <li>height : 높이</li>
+            <li>padding : 안쪽 여백</li>
+            <li>margin : 바깥 여백</li>
+            <li>border : 테두리 부분</li>
+            <ul>
+                <br>
+                <p>==> 박스의 크기를 결정하는 값은? 너비(width),높이(height),패딩(padding),테두리(border)</p>
+                <p>ex -- width 200px; height 300px; padding 30px; border 2px;</p>
+                <a style="font-weight: 300;">전체 박스크기 =
+                    [width+{(padding*2)+(border*2)}]+[height+{(padding*2)+(border*2)})</a>
     </div>
     <div>"box-sizing: border-box ;" padding,border 포함하여 width,height를 설정가능.</div>
     <div style="background-color: yellow; width: 200px; height: 200px;margin: 20px;">
-    <div style="background-color: rgb(86, 91, 133); width: 50%; height: 50%;">부모 요소<a style="color: orange;">(노랑)</a>가 있는 div 세번째 테스트</div>
+        <div style="background-color: rgb(86, 91, 133); width: 50%; height: 50%;">부모 요소<a
+                style="color: orange;">(노랑)</a>가 있는 div 세번째 테스트</div>
     </div>
     <div style="background-color: aqua; width: 80%; height: 80%;">
-        <div style ="background-color: aliceblue; width: 50%; height: 50%;">
+        <div style="background-color: aliceblue; width: 50%; height: 50%;">
             부모 요소가 %인 네번쩨 테스트
         </div>
     </div>
     <div style="background-color:aliceblue; width: 200px; height: 300px; padding: 30px; border: 2px;"></div>
     <hr>
 </body>
+
 </html>
