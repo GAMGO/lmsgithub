@@ -9,14 +9,9 @@
 </head>
 
 <body>
-  <header>
-    <hr />
-    <a href="../../index.html">메인페이지</a>
-    <hr />
-  </header>
     <header>
         <hr />
-        <a href="../../html/day02/03Hyperlink.html">메인페이지</a>
+        <a href="../../index.html">메인페이지</a>
         <hr />
     </header>
     <ul id="twice" style="list-style: none;">
@@ -38,19 +33,19 @@
         const members = ['민아', '모모', '나연', '다현', '지효'];
         //document.write('<h3>트와이스 맴버 : </h3>' + members);
         members.push('사나')
-       /* for (let i = 0; i < members.length; i++) {
-            document.write(`<h4>${members[i]}</h4>`)
-        };
-        // document.write(`<h4>${members[i]}</h4>`)
-        for(let i =0;i<twiceLi.length;i++){
-            console.log(twiceLi[i].textContent);
-            twiceLi[i].textContent=members[i]
-            twiceLi[i].style.color = 'blue'
-        };*/
+        /* for (let i = 0; i < members.length; i++) {
+             document.write(`<h4>${members[i]}</h4>`)
+         };
+         // document.write(`<h4>${members[i]}</h4>`)
+         for(let i =0;i<twiceLi.length;i++){
+             console.log(twiceLi[i].textContent);
+             twiceLi[i].textContent=members[i]
+             twiceLi[i].style.color = 'blue'
+         };*/
         // 배열에서 사용하는 for문 형식 - 인덱스 지정없이 하나씩 가져오기
-        for(let elem of twiceLi){
+        for (let elem of twiceLi) {
             console.log(elem);
-        }for(let val of members){
+        } for (let val of members) {
             console.log(val);
         };
     </script>
