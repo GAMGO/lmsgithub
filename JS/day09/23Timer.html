@@ -10,11 +10,11 @@
 </head>
 
 <body>
-  <header>
-    <hr />
-    <a href="../../index.html">메인페이지</a>
-    <hr />
-  </header>
+    <header>
+        <hr />
+        <a href="../../index.html">메인페이지</a>
+        <hr />
+    </header>
     <h4 id="now"></h4>
     <hr>
     <h2>타이머 설정</h2>
@@ -39,7 +39,7 @@
     const startBtn = document.getElementById('startBtn')
     const stopBtn = document.getElementById('stopBtn')
 
-    function btnToggle(isOn){
+    function btnToggle(isOn) {
         //disabled는 버튼의 비활성화 속성
         startBtn.disabled = isOn;
         stopBtn.disabled = !isOn;
@@ -48,25 +48,25 @@
 
     stopBtn.addEventListener('click', () => {
         window.clearInterval(timerInterval)
-        document.getElementById('seconds').value=0;
+        document.getElementById('seconds').value = 0;
         btnToggle(false)
     })
 
     startBtn.addEventListener('click', () => {
         let timeSeconds = Number(document.getElementById('seconds').value);
-        
+
         if (timeSeconds <= 0) {
 
             alert('0보다 큰 숫자를 기입')
             return;
-        }btnToggle(true)
+        } btnToggle(true)
         updateCount(timeSeconds);
         timerInterval = window.setInterval(() => {
             timeSeconds = timeSeconds - 1;
             if (timeSeconds < 0) {
                 alert('TIME OUT')
                 window.clearInterval(timerInterval);
-                document.getElementById('seconds').value=0;
+                document.getElementById('seconds').value = 0;
                 btnToggle(false);
             } else {
                 updateCount(timeSeconds);
@@ -76,7 +76,7 @@
 
     function updateCount(timeSeconds) {
         document.getElementById('countdown').textContent
-            = `남은시간 : 00:${timeSeconds.toString().padStart(2,'0')}`;
+            = `남은시간 : 00:${timeSeconds.toString().padStart(2, '0')}`;
     }
 </script>
 

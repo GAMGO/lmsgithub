@@ -4,25 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Timeout!</title>
     <link rel="icon" href="assets/icons/watch.png">
     <link rel="stylesheet" href="assets/css/22ex.css">
 </head>
 
 <body>
-  <header>
-    <hr />
-    <a href="../../index.html">메인페이지</a>
-    <hr />
-  </header>
+    <header>
+        <hr />
+        <a href="../../index.html">메인페이지</a>
+        <hr />
+    </header>
     <p>window.setTimeout 테스트 - 브라우저에서 제공되는 기능. 시간을 브라우저가 체크</p>
     <div>시작시간:</div>
     <div id="startDiv"></div>
     <div>현재시간:</div>
     <div id="nowDiv"></div>
     <button id="stopBtn">중지</button>
-    
- <!-- 처음 화면에는 안보이는 요소  -->
+
+    <!-- 처음 화면에는 안보이는 요소  -->
     <div id="sampleModal" class="modal">
         <div class="modalContent">
             <h3>TIME OUT!</h3>
@@ -47,7 +47,7 @@
         // 인터벌 객체를 변수에 할당하여 인터벌 동작을 중지할 때 사용합니다.
         const testInterval = window.setInterval(() => {
             now.textContent = new Date()
-        },1000)
+        }, 1000)
         document.getElementById('stopBtn').addEventListener('click', () => {
             window.clearInterval(testInterval)//인터벌 동작을 중지 (브라우저의 타이머 제거)
         })

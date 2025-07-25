@@ -6,13 +6,8 @@ const header = {
         Authorization: `KakaoAK ${REST_API_KEY}`
     }
 };
-const searching = document.getElementById('keyWords');
-const entry = document.getElementById('enter');
 const query = '트와이스';
 
-entry.addEventListener('click',()=>{
-    
-})
 const url = `https://dapi.kakao.com/v2/search/image?query=${query}&sort=recency`;
 //요청을 보내는 JS 명령어 (체이닝 변수)
 
@@ -20,7 +15,7 @@ const url = `https://dapi.kakao.com/v2/search/image?query=${query}&sort=recency`
 fetch(url, header) //요청 url 주소로 보내기
     .then(response => {  //요처에 대한 응답 수신 ---> 콜백함수 인자 response에 저장
         console.log(response);
-        return response.json(); // 응답의 body(데이터 본문)를 JD객체로 변환
+        return response.json(); // 응답의 body(데이터 본문)를 Json객체로 변환
     })
     .then(data => {
         result = data;
