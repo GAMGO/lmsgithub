@@ -13,7 +13,7 @@
 <body>
     <header>
         <hr />
-        <a href="..\..\html\day02\03Hyperlink.html">메인페이지</a>
+        <a href="../../index.html">메인페이지</a>
         <hr />
     </header>
     <div id="topcon">
@@ -44,23 +44,23 @@
             const parentH = field.offsetHeight;
             console.log(event.target.id);
             switch (e.key) {
-                case 'w': 
-                if(currentT-topline-10 >= mapX){box.style.top = (currentT - 10) + 'px'}
+                case 'w':
+                    if (currentT - topline - 10 >= mapX) { box.style.top = (currentT - 10) + 'px' }
                     break;
                 case 'a':
-                if(currentL-10 >= mapY){box.style.left = (currentL - 10) + 'px'}
+                    if (currentL - 10 >= mapY) { box.style.left = (currentL - 10) + 'px' }
                     break;
-                case 's': 
-                if(currentT+currentH < parentH+currentH){box.style.top = (currentT + 10) + 'px'}
-                
+                case 's':
+                    if (currentT + currentH < parentH + currentH) { box.style.top = (currentT + 10) + 'px' }
+
                     break;
-                case 'd': 
-                if(currentL+currentW+10 <= parentW){box.style.left = (currentL + 10) + 'px'}
+                case 'd':
+                    if (currentL + currentW + 10 <= parentW) { box.style.left = (currentL + 10) + 'px' }
                     break;
                 case 'ArrowUp': console.log('박스가 작아집니다.')
-                if(currentH-10>=10){
-                    box.style.height = (currentH - 10) + 'px';
-                }
+                    if (currentH - 10 >= 10) {
+                        box.style.height = (currentH - 10) + 'px';
+                    }
                     break;
 
                 case 'ArrowDown': console.log('박스가 커집니다.')

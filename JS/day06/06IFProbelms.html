@@ -9,16 +9,16 @@
 </head>
 
 <body style="background: linear-gradient(#000,#15165a);">
-        <header>
+    <header>
         <hr />
-        <a href="..\..\html\day02\03Hyperlink.html">메인페이지</a>
+        <a href="../../index.html">메인페이지</a>
         <hr />
     </header>
     <div>
-    <button id="btn1" @click()>ON</button>
-    <button id="btn2" @click()>OFF</button>
-    <img src="..\day05\assets\imgs\pic_bulboff.gif" alt="전등 꺼짐" style="cursor: pointer;" width="256px">
-    <hr>
+        <button id="btn1" @click()>ON</button>
+        <button id="btn2" @click()>OFF</button>
+        <img src="..\day05\assets\imgs\pic_bulboff.gif" alt="전등 꺼짐" style="cursor: pointer;" width="256px">
+        <hr>
     </div>
 </body>
 <script>
@@ -30,8 +30,8 @@
     let isOn = false; //true(ON), false(OFF)
     let bulbImg;
     let isOnString;
-    img.addEventListener('click',()=>{
-         if (isOn) {
+    img.addEventListener('click', () => {
+        if (isOn) {
             isOnString = 'OFF'
             bulbImg = bulboff
             img.alt = "전등 꺼짐"

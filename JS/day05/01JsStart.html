@@ -12,15 +12,14 @@
         개발 과정에서 문제가 발생할 수 있고 협업시 어려움이 크기때문에 변수 선언을 강요해야하는데
         use strict가 그것을 강요하는 코드이다.*/
         let score = 78;
-        let result = score <0||score>100;
+        let result = score < 0 || score > 100;
         if (result)
         /*result는 실행을 결정하기 위한 조건식 - 참 또는 거짓으로 결과출력
         관계식1 논리연산 관계식2 (AND 또는 OR)
         score >= 70 && score < 80
-        && 둘 다 만족 (AND), || 둘 중 하나만 만족 (OR) ==> Ture값 출력*/
-        {
+        && 둘 다 만족 (AND), || 둘 중 하나만 만족 (OR) ==> Ture값 출력*/ {
             console.log('잘못된 점수');
-        }else{
+        } else {
             console.log('올바른 점수');
         };
 
@@ -28,7 +27,7 @@
 </head>
 <header>
     <hr />
-    <a href="..\..\html\day02\03Hyperlink.html">메인페이지</a>
+    <a href="../../index.html">메인페이지</a>
     <hr />
 </header>
 
@@ -39,7 +38,7 @@
         <li>스크립트 언어 : 이미 존재하는 소프트웨어(브라우저)를 제어하기 위한 용도</li>
         <li>HTML과 CSS가 내용과 디자인을, JS는 동작을 담당.</li>
         <li>깃에서 커밋하기 전에는 는 초록색 올리고 나서는 검정색이 되지만 수정하면 갈색으로 파일명을 구분시켜준다.</li>
-    <!-- 왜 안됨? -->
+        <!-- 왜 안됨? -->
     </ul>
     <h3 id="title">전역 객체</h3>
     <p>객체는 여러가지 데이터를 저장하는 형식임.</p>
