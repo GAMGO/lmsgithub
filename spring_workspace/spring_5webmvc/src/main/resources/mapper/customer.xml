@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.iclass.spring_3mybatis.mapper.CustomerMapper">
+	<select id="selectByPk" parameterType="String" resultType="CustomerDto">
+		select * from tbl_customer
+		where customer_id=#{customerId}
+	</select>
+	<select id="selectAll" resultType="CustomerDto">
+		select * from tbl_customer order by customer_id
+	</select>
+	<insert id = "insert" parameterType="CustomerDto">
+		insert into tbl_customer(customer_id,name,email,age,reg_date) 
+                    values (#{customerId}, #{name}, #{email}, #{age}, sysdate)
+	</insert>
+	<update id="update" parameterType="CustomerDto">
+		update tbl_customer 
+		set email = #{email}, age = #{age} 
+		where customer_id = #{customerId}
+	</update>
+	<delete id="delete" parameterType="String">
+		delete from tbl_customer 
+			where customer_id = #{customerId}
+	</delete>
+</mapper>  
+<!-- 
+${}  : jsp에서 getAttribute 역할
+       문자열 기호 ' ' 가 자동으로 생기지 않습니다.
+#{}  : 매퍼 XML 에서 파라미터 기호
+       문자열 기호 ' ' 가 자동으로 생깁니다.
+ -->
+
+
+

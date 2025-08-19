@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/nav.css" />
+    <title>Document</title>
+</head>
+<body>
+    <h3>상품목록</h3>
+      <hr />
+      <table style="width: 900px; padding: 10px" id="product">
+        <tr>
+          <th>상품코드</th>
+          <th>카테고리</th>
+          <th>상품명</th>
+          <th>가격</th>
+        </tr>
+        <tr th:each="pDto : ${list}">
+          <td th:text="${pDto.pcode}"></td>
+          <td th:text="${pDto.pcategory}"></td>
+          <td th:text="${pDto.pname}"></td>
+          <td th:text="${pDto.price}"></td>
+        </tr>
+      </table> 
+    </div>
+    <a href="/">홈페이지</a>
+</body>
+</html>

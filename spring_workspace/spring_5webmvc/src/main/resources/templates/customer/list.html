@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/nav.css" />
+    <title>덥다 너무 덥다</title>
+  </head>
+  <body>
+    <h1>customer/list</h1>
+    <hr />
+    <p>
+      애플리케이션의 기능에 따라 url 경로와 view 파일이 저자오디는 폴더를 추가할
+      수 있습니다. 여기서는 customer를 경로에 추가하고 view파일도 customer
+      폴더에 저장했습니다.
+    </p>
+    <ul>
+      <li th:text="${page}">애트리뷰트 이름 page로 저장된 데이터 출력</li>
+      <div th:if="${dto!=null}">
+        <li th:text="${dto.name}">
+          애트리뷰트 이름 dto로 저장된 객체의 name필드 출력
+        </li>
+        <li th:text="${dto.address}">
+          애트리뷰트 이름 dto로 저장된 객체의 address필드 출력
+        </li>
+      </div>
+      <li th:text="${list}">애트리뷰트 이름 list로 저장된 객체 출력</li>
+      <li>
+        <ul>
+          <li th:each="str : ${list}"><span th:text="${str}"></span></li>
+        </ul>
+      </li>
+    </ul>
+    <div th:if="${cusList} == null">Customer Attribute는 값이 없습니다.</div>
+    <div th:if="${cusList} != null">
+      <h3>customer</h3>
+      <hr />
+      <table style="width: 900px; padding: 10px" id="customer">
+        <tr>
+          <th>customerId</th>
+          <th>name</th>
+          <th>age</th>
+          <th>email</th>
+          <th>가입날짜</th>
+        </tr>
+        <tr th:each="cusDto : ${cusList}">
+          <td th:text="${cusDto.customerId}"></td>
+          <td th:text="${cusDto.name}"></td>
+          <td th:text="${cusDto.age}"></td>
+          <td th:text="${cusDto.email}"></td>
+          <td th:if="${cusDto.regDate != null}" th:text="${#dates.format(cusDto.regDate,'yyyy-MM-dd')}"></td>
+        </tr>
+      </table> 
+    </div>
+    <a href="/">홈페이지</a>
+  </body>
+</html>

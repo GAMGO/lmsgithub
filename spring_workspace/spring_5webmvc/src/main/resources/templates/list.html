@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href="/css/nav.css">
+    <title>Parameter 연습</title>
+</head>
+<bodwy>
+    <h1>파라미터</h1>
+    <P>
+        터미널의 로그만 확인해주세요.<br>
+        http://localhost:8081/list?name=tom&age=23 는 정상출력 <br>
+        http://localhost:8081/list?name=tom 은 오류. age는 int로 저장하는데 그 때 내부적으로 Integer.parseInt(문자열) 실행. 파라미터 값은 문자열입니다.
+    </P>
+    <p>파라미터가 많은 경우 Query로 계속 연결됨, 파라미터 갯수 만큼 변수를 선언해야하고 너무 많다면 비효율적입니다.<br>
+    따라서 DTO 클래스를 사용합니다. 스프링 부트는 파라미터 이름과 dto 변수명으로 매핑하여 저장합니다.<br>
+    <a href="http://localhost:8081/listA?name=tom&age=23&address=서울&gender=male" target="_blank">눌러라</a><br>
+<a href="http://localhost:8081/listB?name=tom&age=23&address=서울&gender=male">http://localhost:8081/listB</a>
+</p>
+<h3>POST 요청 처리 예시</h3>
+<form action="list
+" method="POST">
+    <input type="text" name ="name" placeholder="이름 입력">
+    <input type="text" name ="age" placeholder="나이 입력">
+    <input type="text" name ="address" placeholder="주소 입력">
+    <input type="text" name ="gender" placeholder="성별 입력">
+    <button type="submit">즈어장</button>
+</form>
+<hr>
+<h3>파일전송</h3>
+<P>application.properties 파일에 서버에서 업로드 요청이 온 파일을 어느 폴더에 저장할 것인지 설정이 필요합니다.<br>
+Form태그의 필수 속성은 "method = "POST" enctype="multipart/form-data" 입니다.<br>
+컨트롤러 클래스에서는 파일을 MultipartFile 타입으로 저장해야 합니다.</P>
+<form action="upload" method = "POST" enctype="multipart/form-data">
+<input type ="text" name = "tile" placeholder="제목 입력">
+<input type = "file" name = "uploadFile" placeholder="파일 업로드">
+<button type = "submit">UPLOAD</button>
+</form>
+ <a href ="/">홈페이지</a>
+</bodwy>
+</html>

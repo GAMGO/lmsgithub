@@ -1,0 +1,55 @@
+{
+    "configurations": [
+
+        {
+            "type": "java",
+            "name": "Spring Boot-Spring1demoApplication<spring_1demo>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "org.iclass.spring_1demo.Spring1demoApplication",
+            "projectName": "spring_1demo",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-Spring2diApplication<spring_2di>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "org.iclass.spring_2di.Spring2diApplication",
+            "projectName": "spring_2di",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-Sping_3mybatisApplication<sping3maybatis>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "org.iclass.spring_3mybatis.Sping_3mybatisApplication",
+            "projectName": "sping3maybatis",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-Spring_4restapiApplication<spring_4restapi>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "org.iclass.spring_4restapi.Spring_4restapiApplication",
+            "projectName": "spring_4restapi",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+                {
+            "type": "java",
+            "name": "Spring Boot-Spring5webmvcApplication<spring_5webmvc>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "org.iclass.spring_5webmvc.Spring5webmvcApplication",
+            "projectName": "spring_5webmvc",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

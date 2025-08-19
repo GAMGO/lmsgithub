@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.iclass.spring_3mybatis.mapper.BuyMapper">
+
+  <select id="selectSaleByCustomer" parameterType="string" resultType="CustomerDto">
+SELECT tp.PCODE,tp.PNAME, tp.PRICE , tp.PRICE*tb.QUANTITY as money
+      from TBL_PRODUCT tp
+      join TBL_BUY tb
+      on tp.PCODE = tb.PCODE
+      and tb.CUSTOMER_ID=#{customer_id}
+  </select>
+<select id="selectCountByYear" parameterType="string" resultType="map">
+    SELECT EXTRACT(YEAR FROM buy_date) AS year,  count(*) as count , sum(quantity) as sum
+    from TBL_BUY tb 
+    group by EXTRACT(YEAR FROM buy_date)
+    having  EXTRACT(YEAR FROM buy_date)=#{year}
+  </select>
+  
+  <select id="selectAllCountByYear" resultType="map">
+    SELECT EXTRACT(YEAR FROM buy_date) AS year,  count(*) as count , sum(quantity) as sum
+    from TBL_BUY tb 
+    group by EXTRACT(YEAR FROM buy_date)
+    order by year
+  </select>
+
+	<select id="selectAll">
+	select * from tbl_buy
+</select>
+	<select id="selectByUser" parameterType="string" resultType="BuyDto">
+		select * from tbl_buy where customer_id=#{customer_id}
+	</select>
+    	<select id="selectByStuff" parameterType="string" resultType="BuyDto">
+		select * from tbl_buy where pcode = #{pcode}
+	</select>
+		<select id="selectByYears" parameterType="string" resultType="BuyDto">
+		select * from tbl_buy where to_char(buy_date,'yyyy')=#{buy_date}
+	</select>
+    	<select id="selectSum" parameterType="string" resultType="int">
+		select sum(quantity) from tbl_buy where pcode=#{pcode}
+	</select>
+</mapper>
