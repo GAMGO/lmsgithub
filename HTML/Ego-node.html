@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>PR_ERC 인물관계도 UI 프로토타입</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
+      background-color: #121418;
+      color: #e2e8f0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    /* 상단 가상 OS 바 */
+    .os-topbar {
+      height: 48px;
+      background: #1a1d24;
+      border-bottom: 1px solid #2d333f;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      z-index: 20;
+    }
+    .os-tabs { display: flex; gap: 8px; }
+    .os-tab {
+      padding: 6px 14px;
+      border-radius: 4px;
+      font-size: 13px;
+      background: #232730;
+      color: #94a3b8;
+      border: 1px solid transparent;
+    }
+    .os-tab.active {
+      background: #2b181a;
+      color: #ffffff;
+      border-color: #8b1d22;
+      font-weight: bold;
+    }
+    .search-box { display: flex; gap: 6px; align-items: center; }
+    .search-box input {
+      background: #0f1115;
+      border: 1px solid #333a48;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 13px;
+      width: 200px;
+    }
+    .search-box button {
+      background: #8b1d22;
+      color: #fff;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .search-box button:hover { background: #a8242a; }
+
+    /* 상태 안내 배너 */
+    .sub-header {
+      background: #161920;
+      border-bottom: 1px solid #252a34;
+      padding: 8px 20px;
+      font-size: 12px;
+      color: #94a3b8;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .badge-mode {
+      background: #8b1d22;
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-weight: bold;
+      margin-right: 8px;
+    }
+
+    /* 관계도 캔버스 */
+    .canvas-wrapper {
+      position: relative;
+      flex: 1;
+      background-image: radial-gradient(#262b36 1px, transparent 1px);
+      background-size: 24px 24px;
+      overflow: hidden;
+    }
+    svg#edge-layer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* 노드 공통 스타일 */
+    .node {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      background: #1e222b;
+      border: 2px solid #475569;
+      border-radius: 8px;
+      padding: 12px 16px;
+      min-width: 170px;
+      text-align: center;
+      cursor: pointer;
+      z-index: 5;
+      transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+    }
+    .node:hover {
+      transform: translate(-50%, -50%) scale(1.04);
+      border-color: #94a3b8;
+    }
+    .node.highlighted {
+      box-shadow: 0 0 0 3px #f59e0b, 0 0 20px rgba(245, 158, 11, 0.6);
+      border-color: #f59e0b !important;
+    }
+
+    /* 노드 유형별 스타일 */
+    .node.center-person {
+      border: 3px solid #8b1d22;
+      background: #271b1e;
+      min-width: 200px;
+    }
+    .node.direct-person {
+      border-color: #3b82f6;
+      background: #192231;
+    }
+    .node.company-node {
+      border: 2px solid #cbd5e1;
+      background: #f8fafc;
+      color: #0f172a;
+    }
+    .node.dept-node {
+      border: 1px solid #64748b;
+      background: #262c38;
+      min-width: 140px;
+      padding: 8px 12px;
+    }
+    .node.unidentified {
+      border-style: dashed;
+      border-color: #64748b;
+      opacity: 0.9;
+    }
+
+    .avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      margin: 0 auto 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 13px;
+      background: #334155;
+      color: #fff;
+      border: 1px solid #64748b;
+    }
+    .company-logo {
+      width: 64px;
+      height: 28px;
+      margin: 0 auto 6px;
+      background: #8b1d22;
+      color: #fff;
+      font-weight: bold;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 3px;
+      letter-spacing: 1px;
+    }
+    .node-title { font-size: 14px; font-weight: bold; margin-bottom: 3px; }
+    .node-sub { font-size: 11px; color: #94a3b8; }
+    .company-node .node-sub { color: #475569; }
+
+    /* 좌클릭 미니 속성 카드 */
+    .mini-card {
+      position: absolute;
+      width: 240px;
+      background: #1a1e26;
+      border: 1px solid #8b1d22;
+      border-radius: 6px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.75);
+      z-index: 30;
+      display: none;
+      overflow: hidden;
+    }
+    .mini-card-header {
+      background: #252a34;
+      padding: 10px 12px;
+      border-bottom: 1px solid #333a48;
+      font-size: 13px;
+      font-weight: bold;
+    }
+    .mini-card-header span {
+      display: block;
+      font-size: 11px;
+      font-weight: normal;
+      color: #94a3b8;
+      margin-top: 2px;
+    }
+    .mini-card-actions { display: flex; flex-direction: column; }
+    .mini-card-actions button {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #262b36;
+      color: #e2e8f0;
+      text-align: left;
+      padding: 10px 14px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .mini-card-actions button:last-child { border-bottom: none; }
+    .mini-card-actions button:hover {
+      background: #8b1d22;
+      color: #fff;
+    }
+
+    /* 알림 / 상세 모달 */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1e293b;
+      border: 1px solid #8b1d22;
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-size: 13px;
+      z-index: 50;
+      display: none;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 상단 가상 OS 메뉴 -->
+  <div class="os-topbar">
+    <div class="os-tabs">
+      <div class="os-tab">정보 (키워드 사전)</div>
+      <div class="os-tab">인물사전</div>
+      <div class="os-tab active">인물관계도</div>
+      <div class="os-tab">이메일</div>
+      <div class="os-tab">메신저</div>
+    </div>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="현재 관계도 내 이름 검색..." />
+      <button onclick="searchNode()">검색</button>
+    </div>
+  </div>
+
+  <!-- 현재 조회 기준 안내 -->
+  <div class="sub-header">
+    <div>
+      <span class="badge-mode" id="modeBadge">인물 중심 관계도</span>
+      <span id="modeDesc">노드를 좌클릭(또는 우클릭)하면 미니 속성 카드가 열립니다. (더블클릭 미사용)</span>
+    </div>
+    <div>※ 해금된 인물 및 조직만 표시됨</div>
+  </div>
+
+  <!-- 관계도 캔버스 -->
+  <div class="canvas-wrapper" id="canvas" onclick="closeMiniCard()">
+    <svg id="edge-layer"></svg>
+    <div id="nodes-container"></div>
+
+    <!-- 미니 속성 카드 -->
+    <div class="mini-card" id="miniCard" onclick="event.stopPropagation()">
+      <div class="mini-card-header" id="miniCardHeader"></div>
+      <div class="mini-card-actions" id="miniCardActions"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // 해금된 데모 데이터 (인물 A, 인물 B, Rio, CEO, M.E.L 연구소)
+    const entities = {
+      person_a: {
+        id: "person_a", type: "person", name: "인물 A (플레이어)",
+        dept: "연구소 제3동", company: "mel", unlockedLevel: "FULL",
+        photoText: "사진", direct: [{ target: "rio", label: "추천인" }],
+        cases: ["[메일] M.E.L 부서 지원 안내", "[문서] M.E.L 지원양식서"]
+      },
+      rio: {
+        id: "rio", type: "person", name: "Rio",
+        dept: "연구소 제3동 · 선임", company: "mel", unlockedLevel: "FULL",
+        photoText: "사진", direct: [{ target: "person_a", label: "피추천인" }],
+        cases: ["[문서] M.E.L 지원양식서 (추천인 기재)"]
+      },
+      person_b: {
+        id: "person_b", type: "person", name: "인물 B",
+        dept: "연구소 제1동", company: "mel", unlockedLevel: "PARTIAL",
+        photoText: "실루엣", direct: [],
+        cases: ["[파일] 제1동 출입 명단 기록"]
+      },
+      ceo: {
+        id: "ceo", type: "person", name: "연구소장 (CEO)",
+        dept: "경영 총괄", company: "mel", unlockedLevel: "FULL",
+        photoText: "사진", direct: [],
+        cases: ["[공지] M.E.L 보안 규정 서약서"]
+      },
+      mel: {
+        id: "mel", type: "company", name: "M.E.L 물질 연구소",
+        sub: "Mysterious Element Laboratory",
+        cases: ["[조직] M.E.L 연구소 기본 개요"]
+      }
+    };
+
+    let currentView = { mode: "PERSON", focusId: "person_a" };
+    let currentEdges = [];
+
+    function render() {
+      closeMiniCard();
+      const container = document.getElementById("nodes-container");
+      container.innerHTML = "";
+      currentEdges = [];
+
+      const badge = document.getElementById("modeBadge");
+      const desc = document.getElementById("modeDesc");
+
+      if (currentView.mode === "PERSON") {
+        const center = entities[currentView.focusId];
+        badge.textContent = `인물 중심: ${center.name}`;
+        desc.textContent = "직접 접점이 없는 같은 회사 인물은 회사 로고 노드를 거쳐 간접 연결됩니다.";
+
+        // 1. 중심 인물 배치
+        createNodeEl(center, 50, 50, "center-person");
+
+        // 2. 직접 관계 인물 배치 (좌측)
+        center.direct.forEach((rel, idx) => {
+          const target = entities[rel.target];
+          const y = 50 + (idx - (center.direct.length - 1) / 2) * 28;
+          createNodeEl(target, 20, y, "direct-person");
+          currentEdges.push({ from: target.id, to: center.id, label: rel.label, dashed: false, color: "#3b82f6" });
+        });
+
+        // 3. 소속 회사 징검다리 노드 배치 (우측 중앙)
+        if (center.company) {
+          const comp = entities[center.company];
+          createNodeEl(comp, 73, 50, "company-node");
+          currentEdges.push({ from: center.id, to: comp.id, label: `소속 · ${center.dept}`, dashed: false, color: "#94a3b8" });
+
+          // 4. 같은 회사의 해금된 다른 인물들 (외곽 간접 연결)
+          const directIds = new Set(center.direct.map(d => d.target));
+          const coworkers = Object.values(entities).filter(
+            e => e.type === "person" && e.company === comp.id && e.id !== center.id && !directIds.has(e.id)
+          );
+          coworkers.forEach((cw, idx) => {
+            const y = 30 + idx * 40;
+            createNodeEl(cw, 90, y, cw.unlockedLevel === "PARTIAL" ? "unidentified" : "");
+            currentEdges.push({ from: comp.id, to: cw.id, label: cw.dept, dashed: true, color: "#64748b" });
+          });
+        }
+      } else if (currentView.mode === "ORG") {
+        const comp = entities[currentView.focusId];
+        badge.textContent = `조직도 중심: ${comp.name}`;
+        desc.textContent = "해금된 부서와 소속 인물만 조직도 계층으로 표시됩니다.";
+
+        createNodeEl(comp, 50, 16, "company-node");
+        createNodeEl(entities.ceo, 50, 40, "");
+        currentEdges.push({ from: comp.id, to: "ceo", label: "대표", dashed: false, color: "#cbd5e1" });
+
+        // 부서 가상 노드
+        createVirtualDept("dept_3", "연구소 제3동", 30, 64);
+        createVirtualDept("dept_1", "연구소 제1동", 70, 64);
+        currentEdges.push({ from: "ceo", to: "dept_3", label: "", dashed: false, color: "#64748b" });
+        currentEdges.push({ from: "ceo", to: "dept_1", label: "", dashed: false, color: "#64748b" });
+
+        createNodeEl(entities.person_a, 20, 86, "");
+        createNodeEl(entities.rio, 40, 86, "");
+        createNodeEl(entities.person_b, 70, 86, "unidentified");
+
+        currentEdges.push({ from: "dept_3", to: "person_a", label: "", dashed: false, color: "#64748b" });
+        currentEdges.push({ from: "dept_3", to: "rio", label: "", dashed: false, color: "#64748b" });
+        currentEdges.push({ from: "dept_1", to: "person_b", label: "", dashed: true, color: "#64748b" });
+      }
+
+      requestAnimationFrame(drawEdges);
+    }
+
+    function createNodeEl(entity, xPercent, yPercent, extraClass) {
+      const el = document.createElement("div");
+      el.className = `node ${extraClass}`.trim();
+      el.id = `node-${entity.id}`;
+      el.dataset.name = entity.name;
+      el.style.left = `${xPercent}%`;
+      el.style.top = `${yPercent}%`;
+
+      if (entity.type === "company") {
+        el.innerHTML = `
+          <div class="company-logo">M.E.L</div>
+          <div class="node-title">${entity.name}</div>
+          <div class="node-sub">${entity.sub}</div>
+        `;
+      } else {
+        const statusText = entity.unlockedLevel === "PARTIAL" ? "이름·부서만 포착" : "신원 확보";
+        el.innerHTML = `
+          <div class="avatar">${entity.photoText}</div>
+          <div class="node-title">${entity.name}</div>
+          <div class="node-sub">${entity.dept} · ${statusText}</div>
+        `;
+      }
+
+      const openHandler = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        openMiniCard(entity, el);
+      };
+      el.addEventListener("click", openHandler);
+      el.addEventListener("contextmenu", openHandler);
+
+      document.getElementById("nodes-container").appendChild(el);
+    }
+
+    function createVirtualDept(id, title, xPercent, yPercent) {
+      const el = document.createElement("div");
+      el.className = "node dept-node";
+      el.id = `node-${id}`;
+      el.dataset.name = title;
+      el.style.left = `${xPercent}%`;
+      el.style.top = `${yPercent}%`;
+      el.innerHTML = `<div class="node-title">${title}</div><div class="node-sub">해금된 부서</div>`;
+      document.getElementById("nodes-container").appendChild(el);
+    }
+
+    function drawEdges() {
+      const svg = document.getElementById("edge-layer");
+      const canvasRect = document.getElementById("canvas").getBoundingClientRect();
+      svg.innerHTML = "";
+
+      currentEdges.forEach(edge => {
+        const fromEl = document.getElementById(`node-${edge.from}`);
+        const toEl = document.getElementById(`node-${edge.to}`);
+        if (!fromEl || !toEl) return;
+
+        const r1 = fromEl.getBoundingClientRect();
+        const r2 = toEl.getBoundingClientRect();
+        const x1 = r1.left + r1.width / 2 - canvasRect.left;
+        const y1 = r1.top + r1.height / 2 - canvasRect.top;
+        const x2 = r2.left + r2.width / 2 - canvasRect.left;
+        const y2 = r2.top + r2.height / 2 - canvasRect.top;
+
+        const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+        line.setAttribute("x1", x1);
+        line.setAttribute("y1", y1);
+        line.setAttribute("x2", x2);
+        line.setAttribute("y2", y2);
+        line.setAttribute("stroke", edge.color);
+        line.setAttribute("stroke-width", "2");
+        if (edge.dashed) line.setAttribute("stroke-dasharray", "6 4");
+        svg.appendChild(line);
+
+        if (edge.label) {
+          const mx = (x1 + x2) / 2;
+          const my = (y1 + y2) / 2;
+          const bg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+          const textWidth = edge.label.length * 9 + 14;
+          bg.setAttribute("x", mx - textWidth / 2);
+          bg.setAttribute("y", my - 11);
+          bg.setAttribute("width", textWidth);
+          bg.setAttribute("height", 20);
+          bg.setAttribute("rx", 4);
+          bg.setAttribute("fill", "#121418");
+          bg.setAttribute("stroke", edge.color);
+          bg.setAttribute("stroke-width", "1");
+          svg.appendChild(bg);
+
+          const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+          text.setAttribute("x", mx);
+          text.setAttribute("y", my + 3);
+          text.setAttribute("fill", "#e2e8f0");
+          text.setAttribute("font-size", "11");
+          text.setAttribute("text-anchor", "middle");
+          text.textContent = edge.label;
+          svg.appendChild(text);
+        }
+      });
+    }
+
+    function openMiniCard(entity, nodeEl) {
+      const card = document.getElementById("miniCard");
+      const header = document.getElementById("miniCardHeader");
+      const actions = document.getElementById("miniCardActions");
+      actions.innerHTML = "";
+
+      if (entity.type === "person") {
+        header.innerHTML = `[${entity.photoText}] ${entity.name}<span>${entity.dept}</span>`;
+
+        addCardButton(actions, "▶ 조회 인물 변경 (중심으로 전환)", () => {
+          currentView = { mode: "PERSON", focusId: entity.id };
+          render();
+        });
+        addCardButton(actions, "▶ 인물 프로필 상세조회", () => {
+          showToast(`[인물사전 이동] '${entity.name}' 상세 프로필 화면을 엽니다.`);
+          closeMiniCard();
+        });
+        addCardButton(actions, `▶ 관련 사건 목록 (${entity.cases.length}건)`, () => {
+          showToast(`관련 단서: ${entity.cases.join(" / ")}`);
+          closeMiniCard();
+        });
+      } else {
+        header.innerHTML = `[로고] ${entity.name}<span>조직 노드</span>`;
+
+        addCardButton(actions, "▶ 조직도 중심으로 보기", () => {
+          currentView = { mode: "ORG", focusId: entity.id };
+          render();
+        });
+        addCardButton(actions, "▶ 조직 상세 정보 조회", () => {
+          showToast(`[조직 정보] ${entity.name} (${entity.sub})`);
+          closeMiniCard();
+        });
+      }
+
+      const canvasRect = document.getElementById("canvas").getBoundingClientRect();
+      const nodeRect = nodeEl.getBoundingClientRect();
+      let left = nodeRect.right - canvasRect.left + 10;
+      let top = nodeRect.top - canvasRect.top;
+
+      if (left + 250 > canvasRect.width) left = nodeRect.left - canvasRect.left - 250;
+      if (top + 160 > canvasRect.height) top = canvasRect.height - 170;
+
+      card.style.left = `${Math.max(10, left)}px`;
+      card.style.top = `${Math.max(10, top)}px`;
+      card.style.display = "block";
+    }
+
+    function addCardButton(parent, label, onClick) {
+      const btn = document.createElement("button");
+      btn.textContent = label;
+      btn.onclick = onClick;
+      parent.appendChild(btn);
+    }
+
+    function closeMiniCard() {
+      document.getElementById("miniCard").style.display = "none";
+    }
+
+    function searchNode() {
+      const query = document.getElementById("searchInput").value.trim();
+      document.querySelectorAll(".node").forEach(n => n.classList.remove("highlighted"));
+      if (!query) return;
+
+      const nodes = Array.from(document.querySelectorAll(".node"));
+      const found = nodes.find(n => n.dataset.name.toLowerCase().includes(query.toLowerCase()));
+      if (found) {
+        found.classList.add("highlighted");
+        showToast(`'${found.dataset.name}' 노드를 찾았습니다.`);
+      } else {
+        showToast(`경고: 현재 관계도에 '${query}' 인물이 없거나 아직 미해금 상태입니다.`);
+      }
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById("toast");
+      t.textContent = msg;
+      t.style.display = "block";
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => { t.style.display = "none"; }, 3000);
+    }
+
+    window.addEventListener("resize", drawEdges);
+    render();
+  </script>
+</body>
+</html>
